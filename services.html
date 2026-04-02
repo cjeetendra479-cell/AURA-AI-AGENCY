@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Services | Neural Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .service-card { background: linear-gradient(145deg, #0f172a, #020617); border: 1px solid rgba(59, 130, 246, 0.1); transition: all 0.4s ease; }
+        .service-card:hover { border-color: #3b82f6; transform: scale(1.02); box-shadow: 0 0 40px rgba(59, 130, 246, 0.1); }
+        .icon-box { background: rgba(59, 130, 246, 0.1); color: #3b82f6; width: 50px; height: 50px; display: flex; items-center; justify-content: center; border-radius: 12px; margin-bottom: 20px; }
+    </style>
+</head>
+<body class="bg-slate-950">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500"><a href="index.html">AURA.AI</a></div>
+        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400 text-slate-300">
+            <a href="index.html" class="hover:text-blue-400 transition">HOME</a>
+            <a href="services.html" class="text-blue-400">SERVICES</a>
+            <a href="portfolio.html" class="hover:text-blue-400 transition">PORTFOLIO</a>
+            <a href="pricing.html" class="hover:text-blue-400 transition">PRICING</a>
+            <a href="about.html" class="hover:text-blue-400 transition">ABOUT</a>
+            <a href="contact.html" class="hover:text-blue-400 transition">CONTACT</a>
+        </div>
+        <button class="bg-blue-600 text-white px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-700 transition">Get Quote</button>
+    </nav>
+
+    <!-- Header -->
+    <section class="max-w-7xl mx-auto py-20 px-6">
+        <div class="max-w-3xl">
+            <span class="text-blue-500 font-black text-[10px] tracking-[0.4em] uppercase mb-4 block underline">Capabilities Matrix</span>
+            <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-6 leading-none">CORE <br><span class="text-blue-600">OFFERINGS.</span></h1>
+            <p class="text-slate-400 text-sm font-medium tracking-wide leading-relaxed">We provide end-to-end AI integration, from custom neural network design to large-scale data automation.</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Service 1 -->
+        <div class="service-card p-10 rounded-[2.5rem]">
+            <div class="icon-box">01</div>
+            <h3 class="text-2xl font-black mb-4 italic uppercase">Custom LLM Training</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">Train a private language model on your company’s internal data for maximum security and relevance.</p>
+            <ul class="text-[10px] font-bold text-blue-400 space-y-2 uppercase tracking-widest">
+                <li>• Data Sanitization</li>
+                <li>• Fine-Tuning</li>
+                <li>• API Deployment</li>
+            </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card p-10 rounded-[2.5rem]">
+            <div class="icon-box">02</div>
+            <h3 class="text-2xl font-black mb-4 italic uppercase">Computer Vision</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">Implement real-time object detection and visual analysis for security, retail, or industrial automation.</p>
+            <ul class="text-[10px] font-bold text-blue-400 space-y-2 uppercase tracking-widest">
+                <li>• Motion Tracking</li>
+                <li>• Face Recognition</li>
+                <li>• Quality Control</li>
+            </ul>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card p-10 rounded-[2.5rem]">
+            <div class="icon-box">03</div>
+            <h3 class="text-2xl font-black mb-4 italic uppercase">Workflow Automation</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">Automate repetitive tasks with AI agents that can read emails, process invoices, and manage schedules.</p>
+            <ul class="text-[10px] font-bold text-blue-400 space-y-2 uppercase tracking-widest">
+                <li>• Zapier Integration</li>
+                <li>• Custom AI Agents</li>
+                <li>• ERP Connectivity</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <!-- Call to Action -->
+    <section class="max-w-7xl mx-auto py-24 px-6 text-center border-t border-slate-900 mt-20">
+        <h2 class="text-3xl font-black italic mb-8 uppercase tracking-tighter">Need a Custom Neural Solution?</h2>
+        <a href="contact.html" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-600 hover:text-white transition inline-block">Consult Our Engineers</a>
+    </section>
+
+    <footer class="text-center py-20 text-slate-700 text-[10px] font-bold tracking-[0.3em] uppercase">
+        © 2026 AURA SERVICES // EFFICIENCY DEFINED.
+    </footer>
+
+</body>
+</html>
