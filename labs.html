@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Labs | Experimental AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .glass-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(59, 130, 246, 0.2); transition: all 0.3s ease; }
+        .glass-card:hover { border-color: #60a5fa; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e; display: inline-block; margin-right: 8px; }
+    </style>
+</head>
+<body class="bg-slate-950">
+
+    <!-- Navbar (Same as Home) -->
+    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500"><a href="index.html">AURA.AI</a></div>
+        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400">
+            <a href="index.html" class="hover:text-blue-400 transition">HOME</a>
+            <a href="labs.html" class="text-blue-400">LABS</a>
+            <a href="neural-nets.html" class="hover:text-blue-400 transition">NEURAL-NETS</a>
+            <a href="pricing.html" class="hover:text-blue-400 transition">PRICING</a>
+            <a href="about.html" class="hover:text-blue-400 transition">ABOUT</a>
+            <a href="contact.html" class="hover:text-blue-400 transition">CONTACT</a>
+        </div>
+        <button class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-500 transition">Access API</button>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="max-w-7xl mx-auto py-20 px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 italic tracking-tighter">EXPERIMENTAL <span class="text-blue-500">LABS.</span></h1>
+        <p class="text-slate-400 max-w-2xl mx-auto">Exploring the boundaries of human-machine interaction through deep neural architecture.</p>
+    </section>
+
+    <!-- Lab Projects Grid -->
+    <section class="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Project 1 -->
+        <div class="glass-card p-8 rounded-[2rem]">
+            <div class="flex items-center mb-6 text-[10px] font-bold text-green-400 tracking-widest uppercase">
+                <span class="status-dot"></span> Active Research
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Project: Neon-Vision</h3>
+            <p class="text-slate-400 text-sm mb-6 leading-relaxed">Real-time object detection model trained on over 5 petabytes of high-resolution video data.</p>
+            <div class="flex justify-between items-center border-t border-slate-800 pt-6">
+                <span class="text-xs text-slate-500 uppercase font-bold tracking-widest">v2.0.4 Beta</span>
+                <a href="#" class="text-blue-500 font-bold text-xs uppercase hover:underline">View Repo</a>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass-card p-8 rounded-[2rem]">
+            <div class="flex items-center mb-6 text-[10px] font-bold text-green-400 tracking-widest uppercase">
+                <span class="status-dot"></span> Active Research
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Aura-Voice Gen</h3>
+            <p class="text-slate-400 text-sm mb-6 leading-relaxed">Synthetic voice generation with emotional context, capable of 15+ human-like nuances.</p>
+            <div class="flex justify-between items-center border-t border-slate-800 pt-6">
+                <span class="text-xs text-slate-500 uppercase font-bold tracking-widest">v1.8.0 Build</span>
+                <a href="#" class="text-blue-500 font-bold text-xs uppercase hover:underline">Listen Sample</a>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="glass-card p-8 rounded-[2rem]">
+            <div class="flex items-center mb-6 text-[10px] font-bold text-blue-400 tracking-widest uppercase">
+                <span class="status-dot" style="background:#3b82f6; box-shadow: 0 0 10px #3b82f6;"></span> Under Dev
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Neural-Writer</h3>
+            <p class="text-slate-400 text-sm mb-6 leading-relaxed">A specialized LLM for creative writing and scriptwriting, mimicking classic literature styles.</p>
+            <div class="flex justify-between items-center border-t border-slate-800 pt-6">
+                <span class="text-xs text-slate-500 uppercase font-bold tracking-widest">Pending Release</span>
+                <a href="#" class="text-slate-600 font-bold text-xs uppercase cursor-not-allowed">Locked</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Lab Stats Section -->
+    <section class="max-w-7xl mx-auto py-24 px-6">
+        <div class="bg-blue-600 rounded-[3rem] p-12 text-center text-white overflow-hidden relative">
+            <div class="relative z-10">
+                <h2 class="text-4xl font-black mb-4 tracking-tighter">1.2 BILLION PARAMETERS</h2>
+                <p class="uppercase tracking-widest text-xs font-bold text-blue-200">Current computational capacity across all lab models</p>
+            </div>
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+        </div>
+    </section>
+
+    <footer class="text-center py-20 text-slate-700 text-[10px] font-bold tracking-[0.3em] uppercase">
+        © 2026 AURA LABS INC. // DATA-DRIVEN FUTURE.
+    </footer>
+
+</body>
+</html>
