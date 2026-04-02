@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Pricing | Select Your Intelligence Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .price-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
+        .price-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
+        .featured-card { border: 2px solid #3b82f6; position: relative; overflow: hidden; }
+        .featured-tag { background: #3b82f6; color: white; transform: rotate(45deg); position: absolute; top: 20px; right: -40px; width: 150px; text-align: center; font-size: 10px; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-slate-950">
+
+    <!-- Navbar (Consistency is Key) -->
+    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500"><a href="index.html">AURA.AI</a></div>
+        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400">
+            <a href="index.html" class="hover:text-blue-400 transition">HOME</a>
+            <a href="labs.html" class="hover:text-blue-400 transition">LABS</a>
+            <a href="neural-nets.html" class="hover:text-blue-400 transition">NEURAL-NETS</a>
+            <a href="pricing.html" class="text-blue-400">PRICING</a>
+            <a href="about.html" class="hover:text-blue-400 transition">ABOUT</a>
+            <a href="contact.html" class="hover:text-blue-400 transition">CONTACT</a>
+        </div>
+        <button class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-500 transition">Launch App</button>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="max-w-7xl mx-auto py-20 px-6 text-center">
+        <span class="text-blue-500 font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block">Scalable Intelligence</span>
+        <h1 class="text-5xl md:text-7xl font-black mb-6 italic tracking-tighter uppercase">Pick Your <span class="text-blue-500">Power.</span></h1>
+        <p class="text-slate-400 max-w-xl mx-auto text-sm">Flexible plans designed for solo developers and global enterprises.</p>
+    </section>
+
+    <!-- Pricing Grid -->
+    <section class="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Plan 1: Starter -->
+        <div class="price-card p-10 rounded-[2.5rem]">
+            <h3 class="text-xs font-black tracking-widest uppercase mb-4 text-slate-500">Starter</h3>
+            <div class="text-5xl font-black mb-6">$0<span class="text-sm text-slate-600 font-normal">/mo</span></div>
+            <ul class="space-y-4 mb-10 text-sm text-slate-400 font-medium">
+                <li>✓ 1,000 API Requests</li>
+                <li>✓ Standard Neural Models</li>
+                <li>✓ Community Support</li>
+                <li class="opacity-30">✗ Custom Fine-tuning</li>
+            </ul>
+            <button class="w-full border border-slate-700 py-4 rounded-2xl font-bold hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">Get Started</button>
+        </div>
+
+        <!-- Plan 2: Pro (Featured) -->
+        <div class="price-card featured-card p-10 rounded-[2.5rem] bg-slate-900/40">
+            <div class="featured-tag uppercase">Most Popular</div>
+            <h3 class="text-xs font-black tracking-widest uppercase mb-4 text-blue-400">Pro Developer</h3>
+            <div class="text-5xl font-black mb-6">$49<span class="text-sm text-slate-600 font-normal">/mo</span></div>
+            <ul class="space-y-4 mb-10 text-sm text-slate-200 font-medium">
+                <li>✓ Unlimited API Requests</li>
+                <li>✓ Advanced Vision Models</li>
+                <li>✓ Priority Email Support</li>
+                <li>✓ Commercial Usage</li>
+            </ul>
+            <button class="w-full bg-blue-600 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-900/50 uppercase text-xs tracking-widest">Upgrade Now</button>
+        </div>
+
+        <!-- Plan 3: Enterprise -->
+        <div class="price-card p-10 rounded-[2.5rem]">
+            <h3 class="text-xs font-black tracking-widest uppercase mb-4 text-slate-500">Enterprise</h3>
+            <div class="text-5xl font-black mb-6">$199<span class="text-sm text-slate-600 font-normal">/mo</span></div>
+            <ul class="space-y-4 mb-10 text-sm text-slate-400 font-medium">
+                <li>✓ Dedicated GPU Cluster</li>
+                <li>✓ Custom Model Training</li>
+                <li>✓ 24/7 Phone Support</li>
+                <li>✓ SLA Guarantees</li>
+            </ul>
+            <button class="w-full border border-slate-700 py-4 rounded-2xl font-bold hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">Contact Sales</button>
+        </div>
+
+    </section>
+
+    <!-- FAQ Small Section -->
+    <section class="max-w-2xl mx-auto py-24 px-6 text-center">
+        <p class="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">No hidden fees. Cancel anytime.</p>
+        <p class="text-slate-400 text-sm italic italic">"Aura-AI has transformed how we handle our backend automation. The Pro plan is a steal." – TechCrunch</p>
+    </section>
+
+    <footer class="text-center py-20 text-slate-700 text-[10px] font-bold tracking-[0.3em] uppercase border-t border-slate-900">
+        © 2026 AURA PRICING SYSTEM // TRANSPARENT FUTURE.
+    </footer>
+
+</body>
+</html>
