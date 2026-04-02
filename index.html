@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura AI | Future of Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.5); }
+        }
+        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .hero-gradient { background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%); }
+        .card-glow:hover { animation: glow 2s infinite; border-color: #60a5fa; transform: scale(1.02); transition: all 0.4s ease; }
+        .text-neon { background: linear-gradient(to r, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body>
+    <div class="hero-gradient fixed inset-0 -z-10"></div>
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500">AURA.AI</div>
+        <div class="hidden md:flex space-x-10 text-sm font-bold tracking-widest text-slate-400">
+            <a href="#" class="hover:text-blue-400 transition">LABS</a>
+            <a href="#" class="hover:text-blue-400 transition">NEURAL NETS</a>
+            <a href="#" class="hover:text-blue-400 transition">PRICING</a>
+        </div>
+        <button class="bg-white text-black px-8 py-3 rounded-full font-black text-xs uppercase hover:bg-blue-500 hover:text-white transition">Launch App</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto py-32 px-6 text-center">
+        <span class="text-blue-500 font-black tracking-[0.5em] text-xs uppercase mb-4 block">Intelligence Redefined</span>
+        <h1 class="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tighter">
+            THE <span class="text-neon">NEURAL</span> <br>REVOLUTION.
+        </h1>
+        <p class="text-slate-400 max-w-xl mx-auto mb-10 text-lg">Automate your workflow with our proprietary deep-learning models. Faster than thought.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="bg-blue-600 px-10 py-5 rounded-2xl font-bold hover:bg-blue-700 transition shadow-xl shadow-blue-900/40">Start Building</button>
+            <button class="bg-slate-900 border border-slate-800 px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition">Read Documentation</button>
+        </div>
+    </section>
+
+    <!-- Unique Feature Cards -->
+    <section class="max-w-7xl mx-auto py-24 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 card-glow">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-xl mb-6 flex items-center justify-center text-blue-400 font-bold">01</div>
+            <h3 class="text-2xl font-bold mb-4">Deep Vision</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Advanced image recognition that identifies patterns humans miss. Perfect for medical & security tech.</p>
+        </div>
+
+        <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 card-glow">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-xl mb-6 flex items-center justify-center text-purple-400 font-bold">02</div>
+            <h3 class="text-2xl font-bold mb-4">NLP Engines</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Natural Language Processing that understands context, emotion, and sarcasm with 99% accuracy.</p>
+        </div>
+
+        <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 card-glow">
+            <div class="w-12 h-12 bg-emerald-500/20 rounded-xl mb-6 flex items-center justify-center text-emerald-400 font-bold">03</div>
+            <h3 class="text-2xl font-bold mb-4">Auto-Scale</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Infrastructure that grows with you. Our AI predicts traffic and scales servers before you need them.</p>
+        </div>
+    </section>
+
+    <footer class="text-center py-20 border-t border-slate-900">
+        <p class="text-slate-600 text-xs tracking-widest uppercase">© 2026 AURA LABORATORY. SECURED BY BLOCKCHAIN.</p>
+    </footer>
+</body>
+</html>
+
