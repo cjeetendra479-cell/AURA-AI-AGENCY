@@ -3,70 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura AI | Future of Automation</title>
+    <title>AURA AI | The Neural Revolution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(147, 51, 234, 0.5); }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
         body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .hero-gradient { background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%); }
-        .card-glow:hover { animation: glow 2s infinite; border-color: #60a5fa; transform: scale(1.02); transition: all 0.4s ease; }
-        .text-neon { background: linear-gradient(to r, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%); }
+        .nav-link { transition: all 0.3s ease; position: relative; }
+        .nav-link:hover { color: #3b82f6; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: #3b82f6; transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
 <body>
-    <div class="hero-gradient fixed inset-0 -z-10"></div>
 
-    <!-- Navigation -->
-    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500">AURA.AI</div>
-        <div class="hidden md:flex space-x-10 text-sm font-bold tracking-widest text-slate-400">
-            <a href="#" class="hover:text-blue-400 transition">LABS</a>
-            <a href="#" class="hover:text-blue-400 transition">NEURAL NETS</a>
-            <a href="#" class="hover:text-blue-400 transition">PRICING</a>
+    <!-- Main Navigation (All Pages Linked Here) -->
+    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto sticky top-0 z-50 bg-black/60 backdrop-blur-xl rounded-b-3xl border-b border-white/5">
+        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500">
+            <a href="index.html">AURA.AI</a>
         </div>
-        <button class="bg-white text-black px-8 py-3 rounded-full font-black text-xs uppercase hover:bg-blue-500 hover:text-white transition">Launch App</button>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400">
+            <a href="index.html" class="nav-link text-blue-400">HOME</a>
+            <a href="services.html" class="nav-link">SERVICES</a>
+            <a href="labs.html" class="nav-link">LABS</a>
+            <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            <a href="neural-nets.html" class="nav-link">NEURAL-NETS</a>
+            <a href="pricing.html" class="nav-link">PRICING</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="careers.html" class="hidden md:block text-[9px] font-black tracking-widest text-slate-500 hover:text-white transition">CAREERS</a>
+            <a href="contact.html" class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-600 hover:text-white transition shadow-lg shadow-white/5">Launch App</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto py-32 px-6 text-center">
-        <span class="text-blue-500 font-black tracking-[0.5em] text-xs uppercase mb-4 block">Intelligence Redefined</span>
-        <h1 class="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tighter">
-            THE <span class="text-neon">NEURAL</span> <br>REVOLUTION.
-        </h1>
-        <p class="text-slate-400 max-w-xl mx-auto mb-10 text-lg">Automate your workflow with our proprietary deep-learning models. Faster than thought.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <button class="bg-blue-600 px-10 py-5 rounded-2xl font-bold hover:bg-blue-700 transition shadow-xl shadow-blue-900/40">Start Building</button>
-            <button class="bg-slate-900 border border-slate-800 px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition">Read Documentation</button>
+    <main class="relative pt-20 pb-32 hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <span class="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-[10px] font-black tracking-[0.3em] text-blue-400 mb-8 uppercase">Intelligence Redefined</span>
+            
+            <h1 class="text-6xl md:text-9xl font-black italic tracking-tighter leading-[0.85] mb-12 uppercase">
+                THE <br><span class="text-blue-600">REVOLUTION.</span>
+            </h1>
+            
+            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed mb-12 font-medium">
+                Automate your workflow with our proprietary deep-learning models. Faster than thought, more precise than humanly possible.
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="services.html" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition shadow-2xl shadow-blue-900/40">Explore Services</a>
+                <a href="portfolio.html" class="bg-slate-900 border border-slate-800 text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">View Work</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mini Features (Links to other sections) -->
+    <section class="max-w-7xl mx-auto py-24 px-6 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/5">
+        <div class="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem]">
+            <h3 class="text-xl font-black mb-4 uppercase italic">Neural-Nets</h3>
+            <p class="text-slate-500 text-sm mb-6">Deep dive into our core architectural layers and synaptic processing.</p>
+            <a href="neural-nets.html" class="text-blue-500 font-bold text-[10px] tracking-widest uppercase underline">Learn More</a>
+        </div>
+        <div class="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem]">
+            <h3 class="text-xl font-black mb-4 uppercase italic">Research Labs</h3>
+            <p class="text-slate-500 text-sm mb-6">See what we are building next in our experimental AI playground.</p>
+            <a href="labs.html" class="text-blue-500 font-bold text-[10px] tracking-widest uppercase underline">Visit Labs</a>
+        </div>
+        <div class="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem]">
+            <h3 class="text-xl font-black mb-4 uppercase italic">Pricing</h3>
+            <p class="text-slate-500 text-sm mb-6">Scalable plans for developers and large-scale global enterprises.</p>
+            <a href="pricing.html" class="text-blue-400 font-bold text-[10px] tracking-widest uppercase underline">Check Plans</a>
         </div>
     </section>
 
-    <!-- Unique Feature Cards -->
-    <section class="max-w-7xl mx-auto py-24 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 card-glow">
-            <div class="w-12 h-12 bg-blue-500/20 rounded-xl mb-6 flex items-center justify-center text-blue-400 font-bold">01</div>
-            <h3 class="text-2xl font-bold mb-4">Deep Vision</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Advanced image recognition that identifies patterns humans miss. Perfect for medical & security tech.</p>
+    <!-- Footer with Legal Links -->
+    <footer class="max-w-7xl mx-auto py-20 px-6 border-t border-white/5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+            <div>
+                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Company</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-wider">
+                    <li><a href="about.html" class="hover:text-blue-500 transition">About Us</a></li>
+                    <li><a href="careers.html" class="hover:text-blue-500 transition">Careers</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-500 transition">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Platform</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-wider">
+                    <li><a href="services.html" class="hover:text-blue-500 transition">Services</a></li>
+                    <li><a href="labs.html" class="hover:text-blue-500 transition">Labs</a></li>
+                    <li><a href="pricing.html" class="hover:text-blue-500 transition">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Legal</h4>
+                <ul class="space-y-4 text-xs font-bold uppercase tracking-wider">
+                    <li><a href="privacy.html" class="hover:text-blue-500 transition">Privacy</a></li>
+                    <li><a href="privacy.html" class="hover:text-blue-500 transition">Terms</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Newsletter</h4>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Email" class="bg-slate-900 border border-slate-800 p-2 rounded-lg text-[10px] w-full outline-none focus:border-blue-500">
+                    <button class="bg-blue-600 p-2 rounded-lg text-[10px] font-bold">JOIN</button>
+                </div>
+            </div>
         </div>
-
-        <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 card-glow">
-            <div class="w-12 h-12 bg-purple-500/20 rounded-xl mb-6 flex items-center justify-center text-purple-400 font-bold">02</div>
-            <h3 class="text-2xl font-bold mb-4">NLP Engines</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Natural Language Processing that understands context, emotion, and sarcasm with 99% accuracy.</p>
+        <div class="text-center text-[10px] font-bold tracking-[0.3em] text-slate-700 uppercase">
+            © 2026 AURA LABORATORY. SECURED BY BLOCKCHAIN.
         </div>
-
-        <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 card-glow">
-            <div class="w-12 h-12 bg-emerald-500/20 rounded-xl mb-6 flex items-center justify-center text-emerald-400 font-bold">03</div>
-            <h3 class="text-2xl font-bold mb-4">Auto-Scale</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Infrastructure that grows with you. Our AI predicts traffic and scales servers before you need them.</p>
-        </div>
-    </section>
-
-    <footer class="text-center py-20 border-t border-slate-900">
-        <p class="text-slate-600 text-xs tracking-widest uppercase">© 2026 AURA LABORATORY. SECURED BY BLOCKCHAIN.</p>
     </footer>
+
 </body>
 </html>
-
