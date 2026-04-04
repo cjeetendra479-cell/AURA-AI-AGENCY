@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA AI | Admin Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-[#050505] text-white font-sans selection:bg-blue-500/30">
+
+    <div class="min-h-screen flex items-center justify-center p-6">
+        <div class="w-full max-w-xl bg-zinc-900/50 border border-white/10 p-10 rounded-[2.5rem] backdrop-blur-xl shadow-2xl">
+            
+            <div class="mb-10 text-center">
+                <h1 class="text-4xl font-black italic uppercase text-blue-500 tracking-tighter italic">AURA AI</h1>
+                <p class="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mt-2">Project Control Center</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2 ml-4">Project Title</label>
+                    <input type="text" id="pTitle" placeholder="e.g. Neural Network UI" class="w-full bg-black border border-white/5 p-5 rounded-2xl outline-none focus:border-blue-500 transition-all text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2 ml-4">Short Description</label>
+                    <textarea id="pDesc" placeholder="Describe the tech stack used..." class="w-full bg-black border border-white/5 p-5 rounded-2xl h-32 outline-none focus:border-blue-500 transition-all text-sm"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2 ml-4">Project Image URL</label>
+                    <input type="text" id="pImg" placeholder="https://images.unsplash.com/..." class="w-full bg-black border border-white/5 p-5 rounded-2xl outline-none focus:border-blue-500 transition-all text-sm">
+                </div>
+
+                <button onclick="publishToLive()" id="publishBtn" class="w-full bg-blue-600 hover:bg-white hover:text-black text-white py-5 rounded-2xl font-black uppercase tracking-widest transition-all shadow-xl shadow-blue-900/20 active:scale-95">
+                    Push to Live Website
+                </button>
+            </div>
+
+            <p id="statusMsg" class="mt-6 text-center text-[10px] font-black uppercase tracking-widest hidden text-green-500 italic">✔ Project Published Successfully!</p>
+        </div>
+    </div>
+
+    <script>
+        // Triple-Checked Firebase Config for AURA-AI-AGENCY
+        const firebaseConfig = {
+            apiKey: "AIzaSyC-Q4H3y9W...", // Aapka pura API Key
+            authDomain: "aura-ai-agency.firebaseapp.com",
+            projectId: "aura-ai-agency",
+            storageBucket: "aura-ai-agency.firebasestorage.app",
+            messagingSenderId: "859076065133",
+            appId: "1:859076065133:web:f6078dabf975bf01280c64",
+            measurementId: "G-0MRWWPVZTM"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        async function publishToLive() {
+            const title = document.getElementById('pTitle').value;
+            const desc = document.getElementById('pDesc').value;
+            const img = document.getElementById('pImg').value;
+            const btn = document.getElementById('publishBtn');
+
+            if(!title || !desc || !img) {
+                alert("Bhai, saari details bharna zaroori hai!");
+                return;
+            }
+
+            btn.innerText = "UPLOADING...";
+            btn.disabled = true;
+
+            try {
+                await db.collection("projects").add({
+                    title: title,
+                    description: desc,
+                    imageUrl: img,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                document.getElementById('statusMsg').classList.remove('hidden');
+                btn.innerText = "PUSH TO LIVE WEBSITE";
+                btn.disabled = false;
+                
+                // Form Clear
+                document.getElementById('pTitle').value = "";
+                document.getElementById('pDesc').value = "";
+                document.getElementById('pImg').value = "";
+
+                setTimeout(() => {
+                    document.getElementById('statusMsg').classList.add('hidden');
+                }, 3000);
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error! Firebase Rules check karein.");
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+                  </html>
+
