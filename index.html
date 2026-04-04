@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA AI | Premium Agency</title>
+    <title>AURA AI | Master Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <style>
@@ -14,71 +13,71 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        ::-webkit-scrollbar { display: none; } /* Hide scrollbar for clean look */
+        
+        /* Hide Scrollbar but allow scrolling for 13 buttons */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .nav-link { color: #a1a1aa; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s; white-space: nowrap; }
+        .nav-link:hover { color: white; }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- NAVIGATION (10 PAGES LINKS) -->
-    <nav class="fixed top-0 w-full z-[100] glass py-4 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-black italic uppercase gradient-text">Aura-AI</h1>
-            <!-- Scrollable Menu for Mobile -->
-            <div class="flex gap-5 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 overflow-x-auto whitespace-nowrap px-4 no-scrollbar">
-                <a href="index.html" class="text-white border-b border-blue-500 pb-1">Home</a>
-                <a href="about.html" class="hover:text-white transition-colors">About</a>
-                <a href="services.html" class="hover:text-white transition-colors">Services</a>
-                <a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a>
-                <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
-                <a href="team.html" class="hover:text-white transition-colors">Team</a>
-                <a href="faq.html" class="hover:text-white transition-colors">FAQ</a>
-                <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
-                <a href="pricing.html" class="hover:text-white transition-colors">Pricing</a>
-                <a href="admin.html" class="bg-blue-600 text-white px-3 py-1 rounded-full text-[9px] hover:bg-white hover:text-black transition-all">Admin Panel</a>
+    <nav class="fixed top-0 w-full z-[100] glass py-5">
+        <div class="max-w-[1400px] mx-auto px-6 flex items-center justify-between gap-6">
+            <h1 class="text-xl font-black italic uppercase gradient-text shrink-0">Aura-AI</h1>
+            
+            <div class="flex items-center gap-6 overflow-x-auto no-scrollbar py-2 px-4 bg-white/5 rounded-full border border-white/5">
+                <a href="index.html" class="nav-link text-white border-b border-blue-500">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="labs.html" class="nav-link">Labs</a>
+                <a href="neural-nets.html" class="nav-link">Neural-Nets</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+                <a href="team.html" class="nav-link">Team</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="privacy.html" class="nav-link">Privacy</a>
             </div>
+
+            <a href="admin.html" class="bg-blue-600 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all shrink-0">Admin</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
-        <div class="bg-blue-500/10 border border-blue-500/20 px-4 py-1 rounded-full mb-6">
-            <span class="text-blue-500 font-bold tracking-[0.4em] uppercase text-[9px]">The New Standard of Web Development</span>
+    <section class="h-[90vh] flex flex-col justify-center items-center text-center px-6">
+        <div class="bg-blue-600/10 border border-blue-600/30 px-4 py-1 rounded-full mb-8">
+            <span class="text-blue-500 font-black tracking-[0.5em] text-[9px] uppercase">Elite AI Agency Network</span>
         </div>
-        <h2 class="text-6xl md:text-8xl font-black leading-tight mb-6">Building The <br> <span class="gradient-text italic underline decoration-blue-500/30">Future of Web.</span></h2>
-        <p class="text-zinc-500 max-w-xl text-sm md:text-base mb-10 leading-relaxed font-medium">Professional AI-Integrated Websites starting from ₹10k. Scalable, Secure, and Dynamic.</p>
-        <div class="flex flex-wrap gap-4 justify-center">
-            <a href="#projects" class="bg-white text-black px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all shadow-xl shadow-white/5">Our Projects</a>
-            <a href="contact.html" class="glass px-10 py-5 rounded-2xl font-black uppercase tracking-widest border border-white/10 hover:bg-white/5 transition-all">Get Quote</a>
+        <h2 class="text-6xl md:text-8xl font-black leading-tight mb-8">Aura-AI <br> <span class="gradient-text italic underline decoration-blue-500/20">Ecosystem.</span></h2>
+        <p class="text-zinc-500 max-w-2xl text-sm md:text-base mb-12 leading-relaxed">A massive network of 13+ interconnected digital platforms. From Neural Nets to Creative Labs.</p>
+        <div class="flex gap-4">
+            <a href="#live-work" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:scale-105 transition-all">View All Work</a>
         </div>
     </section>
 
-    <!-- DYNAMIC PROJECTS (FROM ADMIN PANEL) -->
-    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 mb-16">
-            <h3 class="text-3xl font-black uppercase italic">Live Projects</h3>
-            <div class="h-[2px] flex-grow bg-gradient-to-r from-blue-500/50 to-transparent"></div>
-            <p class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Auto-Updating Portfolio</p>
+    <section id="live-work" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 mb-20">
+            <h3 class="text-4xl font-black uppercase italic italic">Live Feed</h3>
+            <div class="h-[1px] flex-grow bg-white/10"></div>
+            <p class="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">Real-time Cloud Updates</p>
         </div>
 
-        <!-- DATABASE DATA LOADS HERE -->
         <div id="project-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <!-- Loading State -->
-            <div class="col-span-full py-20 text-center">
-                <div class="inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-                <p class="text-xs uppercase tracking-widest text-zinc-500">Syncing with Cloud Backend...</p>
+            <div class="col-span-full text-center py-20 text-zinc-700 font-bold uppercase tracking-widest text-xs animate-pulse">
+                Syncing with Database...
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-20 border-t border-white/5 text-center bg-black">
-        <h1 class="text-4xl font-black italic text-white/5 mb-8 uppercase tracking-[1em]">AURA</h1>
-        <p class="text-zinc-600 text-[10px] uppercase tracking-[0.5em] font-bold">Delhi, India • 8619436849 • 2026</p>
+    <footer class="py-20 border-t border-white/5 text-center bg-[#080808]">
+        <p class="text-zinc-700 text-[10px] font-black uppercase tracking-[0.8em]">Aura AI Agency • 13 Nodes Live • 2026</p>
     </footer>
 
-    <!-- BACKEND LOGIC -->
     <script>
-        // Verified Firebase Config for Aura-AI-Agency
         const firebaseConfig = {
             apiKey: "AIzaSyCBK6Nz1cd4A0x7wOnLG2-eNVfDzSgDfXo",
             authDomain: "aura-ai-agency.firebaseapp.com",
@@ -92,41 +91,31 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        async function loadProjects() {
+        async function fetchProjects() {
             const container = document.getElementById('project-container');
-            
             try {
                 const snapshot = await db.collection("projects").orderBy("time", "desc").get();
                 container.innerHTML = ""; 
-
                 if(snapshot.empty) {
-                    container.innerHTML = "<div class='col-span-full text-center text-zinc-600 py-20 border-2 border-dashed border-white/5 rounded-3xl'>No projects found. Use Admin Panel to upload.</div>";
+                    container.innerHTML = "<p class='col-span-full text-center text-zinc-600'>No projects in cloud.</p>";
                     return;
                 }
-
                 snapshot.forEach((doc) => {
                     const data = doc.data();
-                    const projectHTML = `
-                        <div class="glass p-5 rounded-[2.5rem] group hover:border-blue-500/50 transition-all duration-500 shadow-2xl hover:shadow-blue-500/10">
-                            <div class="relative overflow-hidden rounded-[1.8rem] mb-6">
-                                <img src="${data.imageUrl || data.img}" class="w-full h-72 object-cover transform group-hover:scale-105 transition-all duration-700" alt="${data.title}">
-                                <div class="absolute top-4 right-4">
-                                    <span class="text-[9px] bg-black/60 backdrop-blur-md text-white border border-white/10 px-3 py-1 rounded-full font-bold uppercase">Dynamic Project</span>
-                                </div>
-                            </div>
-                            <h4 class="text-2xl font-black mb-3 group-hover:text-blue-500 transition-colors uppercase italic">${data.title}</h4>
-                            <p class="text-zinc-500 text-sm leading-relaxed mb-6 font-medium">${data.description || data.desc}</p>
-                            <a href="#" class="inline-block text-[10px] font-black uppercase tracking-widest text-blue-500 border-b border-blue-500/30 pb-1 hover:text-white hover:border-white transition-all underline">View Case Study</a>
+                    container.innerHTML += `
+                        <div class="bg-zinc-900/30 border border-white/5 p-5 rounded-[2.5rem] group hover:border-blue-600/40 transition-all">
+                            <img src="${data.imageUrl}" class="w-full h-64 object-cover rounded-[1.8rem] mb-6 grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <h4 class="text-2xl font-black uppercase italic mb-3 text-blue-500">${data.title}</h4>
+                            <p class="text-zinc-500 text-sm mb-6 line-clamp-3">${data.description}</p>
+                            <div class="h-[1px] w-full bg-white/5 mb-4"></div>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-zinc-600">Aura Verified Project</span>
                         </div>
                     `;
-                    container.innerHTML += projectHTML;
                 });
-            } catch (error) {
-                container.innerHTML = "<p class='text-red-500 col-span-full text-center'>Connection Error. Check Rules.</p>";
-            }
+            } catch (e) { console.log(e); }
         }
-
-        window.onload = loadProjects;
+        window.onload = fetchProjects;
     </script>
 </body>
 </html>
+
