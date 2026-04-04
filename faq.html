@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | AURA AI AGENCY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .faq-item { transition: all 0.4s ease; cursor: pointer; }
+        .faq-item:hover { border-color: rgba(59, 130, 246, 0.5); background: rgba(59, 130, 246, 0.02); }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION (Same as Team/Index) -->
+    <nav class="fixed top-0 w-full z-[100] glass py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-black italic uppercase gradient-text">Aura-AI</h1>
+            <div class="flex gap-5 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 overflow-x-auto whitespace-nowrap px-4">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <a href="about.html" class="hover:text-white">About</a>
+                <a href="services.html" class="hover:text-white">Services</a>
+                <a href="team.html" class="hover:text-white">Team</a>
+                <a href="faq.html" class="text-blue-500 border-b border-blue-500 pb-1">FAQ</a>
+                <a href="contact.html" class="hover:text-white">Contact</a>
+                <a href="admin.html" class="bg-blue-600 text-white px-3 py-1 rounded-full text-[9px]">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ HERO -->
+    <section class="pt-40 pb-20 px-6 text-center">
+        <span class="text-blue-500 font-bold tracking-[0.5em] uppercase text-[10px] mb-4">Support Center</span>
+        <h2 class="text-5xl md:text-7xl font-black uppercase italic mb-6">Common <span class="gradient-text">Questions</span></h2>
+        <p class="text-zinc-500 max-w-xl mx-auto">Everything you need to know about our high-end web solutions and delivery process.</p>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="max-w-3xl mx-auto px-6 pb-32">
+        <div class="space-y-4">
+            
+            <!-- Q1 -->
+            <div class="glass p-6 rounded-3xl border border-white/5 faq-item" onclick="this.querySelector('p').classList.toggle('hidden')">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-lg font-bold italic uppercase tracking-wider">How much does a website cost?</h4>
+                    <span class="text-blue-500">+</span>
+                </div>
+                <p class="mt-4 text-zinc-500 text-sm leading-relaxed hidden">Our professional dynamic websites start from ₹10,000, which includes a cloud backend (Firebase) and custom UI design.</p>
+            </div>
+
+            <!-- Q2 -->
+            <div class="glass p-6 rounded-3xl border border-white/5 faq-item" onclick="this.querySelector('p').classList.toggle('hidden')">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-lg font-bold italic uppercase tracking-wider">How long does delivery take?</h4>
+                    <
+                      
