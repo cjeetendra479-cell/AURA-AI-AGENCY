@@ -3,121 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA AI | The Neural Revolution</title>
+    <title>AURA AI | Next-Gen Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
-        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%); }
-        .nav-link { transition: all 0.3s ease; position: relative; }
-        .nav-link:hover { color: #3b82f6; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0; background-color: #3b82f6; transition: width 0.3s; }
-        .nav-link:hover::after { width: 100%; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
-    <!-- Main Navigation (All Pages Linked Here) -->
-    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto sticky top-0 z-50 bg-black/60 backdrop-blur-xl rounded-b-3xl border-b border-white/5">
-        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500">
-            <a href="index.html">AURA.AI</a>
-        </div>
-        
-        <!-- Desktop Menu -->
-        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400">
-            <a href="index.html" class="nav-link text-blue-400">HOME</a>
-            <a href="services.html" class="nav-link">SERVICES</a>
-            <a href="labs.html" class="nav-link">LABS</a>
-            <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
-            <a href="neural-nets.html" class="nav-link">NEURAL-NETS</a>
-            <a href="pricing.html" class="nav-link">PRICING</a>
-            <a href="about.html" class="nav-link">ABOUT</a>
-            <a href="contact.html" class="nav-link">CONTACT</a>
-        </div>
-
-        <div class="flex items-center gap-4">
-            <a href="careers.html" class="hidden md:block text-[9px] font-black tracking-widest text-slate-500 hover:text-white transition">CAREERS</a>
-            <a href="contact.html" class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-600 hover:text-white transition shadow-lg shadow-white/5">Launch App</a>
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-6 flex justify-between items-center">
+        <h1 class="text-2xl font-black italic tracking-tighter uppercase gradient-text">Aura-AI</h1>
+        <div class="flex gap-6 text-xs font-bold uppercase tracking-widest text-zinc-400">
+            <a href="#" class="hover:text-white">Home</a>
+            <a href="#projects" class="hover:text-white">Work</a>
+            <a href="admin.html" class="bg-white text-black px-4 py-1 rounded-full text-[10px]">Admin</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="relative pt-20 pb-32 hero-gradient">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <span class="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-[10px] font-black tracking-[0.3em] text-blue-400 mb-8 uppercase">Intelligence Redefined</span>
-            
-            <h1 class="text-6xl md:text-9xl font-black italic tracking-tighter leading-[0.85] mb-12 uppercase">
-                THE <br><span class="text-blue-600">REVOLUTION.</span>
-            </h1>
-            
-            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed mb-12 font-medium">
-                Automate your workflow with our proprietary deep-learning models. Faster than thought, more precise than humanly possible.
-            </p>
+    <!-- HERO SECTION -->
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <span class="text-blue-500 font-bold tracking-[0.5em] uppercase text-[10px] mb-4">India's Premium AI Solutions</span>
+        <h2 class="text-5xl md:text-8xl font-black leading-tight mb-6">Building The <br> <span class="gradient-text italic">Future of Web.</span></h2>
+        <p class="text-zinc-500 max-w-lg text-sm md:text-base mb-10">We create high-end professional websites with dynamic backends for global clients.</p>
+        <a href="#projects" class="bg-blue-600 px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-all shadow-2xl shadow-blue-500/20">Explore Projects</a>
+    </section>
 
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="services.html" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition shadow-2xl shadow-blue-900/40">Explore Services</a>
-                <a href="portfolio.html" class="bg-slate-900 border border-slate-800 text-white px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">View Work</a>
+    <!-- DYNAMIC PROJECTS SECTION -->
+    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <h3 class="text-3xl font-black uppercase italic italic">Our Portfolio</h3>
+                <p class="text-zinc-500 text-sm mt-2 font-medium">Live updates from our Cloud Backend</p>
             </div>
+            <div class="h-[1px] flex-grow mx-10 bg-white/10 hidden md:block"></div>
         </div>
-    </main>
 
-    <!-- Mini Features (Links to other sections) -->
-    <section class="max-w-7xl mx-auto py-24 px-6 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/5">
-        <div class="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem]">
-            <h3 class="text-xl font-black mb-4 uppercase italic">Neural-Nets</h3>
-            <p class="text-slate-500 text-sm mb-6">Deep dive into our core architectural layers and synaptic processing.</p>
-            <a href="neural-nets.html" class="text-blue-500 font-bold text-[10px] tracking-widest uppercase underline">Learn More</a>
-        </div>
-        <div class="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem]">
-            <h3 class="text-xl font-black mb-4 uppercase italic">Research Labs</h3>
-            <p class="text-slate-500 text-sm mb-6">See what we are building next in our experimental AI playground.</p>
-            <a href="labs.html" class="text-blue-500 font-bold text-[10px] tracking-widest uppercase underline">Visit Labs</a>
-        </div>
-        <div class="p-8 bg-slate-900/30 border border-white/5 rounded-[2.5rem]">
-            <h3 class="text-xl font-black mb-4 uppercase italic">Pricing</h3>
-            <p class="text-slate-500 text-sm mb-6">Scalable plans for developers and large-scale global enterprises.</p>
-            <a href="pricing.html" class="text-blue-400 font-bold text-[10px] tracking-widest uppercase underline">Check Plans</a>
+        <!-- YAHAN DATA APNE AAP AAYEGA -->
+        <div id="project-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Loading State -->
+            <div class="text-zinc-500 animate-pulse uppercase tracking-widest text-xs">Connecting to Firebase...</div>
         </div>
     </section>
 
-    <!-- Footer with Legal Links -->
-    <footer class="max-w-7xl mx-auto py-20 px-6 border-t border-white/5">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
-            <div>
-                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Company</h4>
-                <ul class="space-y-4 text-xs font-bold uppercase tracking-wider">
-                    <li><a href="about.html" class="hover:text-blue-500 transition">About Us</a></li>
-                    <li><a href="careers.html" class="hover:text-blue-500 transition">Careers</a></li>
-                    <li><a href="contact.html" class="hover:text-blue-500 transition">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Platform</h4>
-                <ul class="space-y-4 text-xs font-bold uppercase tracking-wider">
-                    <li><a href="services.html" class="hover:text-blue-500 transition">Services</a></li>
-                    <li><a href="labs.html" class="hover:text-blue-500 transition">Labs</a></li>
-                    <li><a href="pricing.html" class="hover:text-blue-500 transition">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Legal</h4>
-                <ul class="space-y-4 text-xs font-bold uppercase tracking-wider">
-                    <li><a href="privacy.html" class="hover:text-blue-500 transition">Privacy</a></li>
-                    <li><a href="privacy.html" class="hover:text-blue-500 transition">Terms</a></li>
-                </ul>
-            </div>
-            <div class="col-span-2 md:col-span-1">
-                <h4 class="text-[10px] font-black tracking-widest uppercase text-slate-500 mb-6">Newsletter</h4>
-                <div class="flex gap-2">
-                    <input type="email" placeholder="Email" class="bg-slate-900 border border-slate-800 p-2 rounded-lg text-[10px] w-full outline-none focus:border-blue-500">
-                    <button class="bg-blue-600 p-2 rounded-lg text-[10px] font-bold">JOIN</button>
-                </div>
-            </div>
-        </div>
-        <div class="text-center text-[10px] font-bold tracking-[0.3em] text-slate-700 uppercase">
-            © 2026 AURA LABORATORY. SECURED BY BLOCKCHAIN.
-        </div>
+    <!-- FOOTER -->
+    <footer class="py-20 border-t border-white/5 text-center">
+        <p class="text-zinc-600 text-[10px] uppercase tracking-[0.3em] font-bold">AURA-AI-AGENCY • DELHI, INDIA • 2026</p>
     </footer>
 
+    <!-- BACKEND LOGIC (FIREBASE) -->
+    <script>
+        // 1. Aapka Verified Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCBK6Nz1cd4A0x7wOnLG2-eNVfDzSgDfXo",
+            authDomain: "aura-ai-agency.firebaseapp.com",
+            projectId: "aura-ai-agency",
+            storageBucket: "aura-ai-agency.firebasestorage.app",
+            messagingSenderId: "859076065133",
+            appId: "1:859076065133:web:f6078dabf975bf01280c64",
+            measurementId: "G-0MRWWPVZTM"
+        };
+
+        // 2. Initialize
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 3. Get Data and Display
+        async function loadProjects() {
+            const container = document.getElementById('project-container');
+            
+            try {
+                const snapshot = await db.collection("projects").orderBy("time", "desc").get();
+                container.innerHTML = ""; // Clear loading message
+
+                if(snapshot.empty) {
+                    container.innerHTML = "<p class='text-zinc-600'>No projects published yet.</p>";
+                    return;
+                }
+
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const projectHTML = `
+                        <div class="glass p-4 rounded-[2.5rem] group hover:border-blue-500/50 transition-all duration-500">
+                            <div class="relative overflow-hidden rounded-[2rem] mb-6">
+                                <img src="${data.imageUrl || data.img}" class="w-full h-64 object-cover transform group-hover:scale-110 transition-all duration-700" alt="${data.title}">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <span class="text-[10px] bg-blue-600 px-3 py-1 rounded-full font-bold uppercase">Live Project</span>
+                                </div>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">${data.title}</h4>
+                            <p class="text-zinc-500 text-sm leading-relaxed mb-4">${data.description || data.desc}</p>
+                        </div>
+                    `;
+                    container.innerHTML += projectHTML;
+                });
+            } catch (error) {
+                console.error("Firebase Error:", error);
+                container.innerHTML = "<p class='text-red-500'>Backend Connection Failed. Check Rules.</p>";
+            }
+        }
+
+        window.onload = loadProjects;
+    </script>
 </body>
 </html>
