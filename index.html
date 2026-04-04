@@ -5,77 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA AI | Master Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; margin:0; padding:0; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Hide Scrollbar but allow scrolling for 13 buttons */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .nav-link { color: #a1a1aa; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s; white-space: nowrap; }
-        .nav-link:hover { color: white; }
+        .nav-link { color: #a1a1aa; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 8px; border-radius: 4px; transition: 0.3s; }
+        .nav-link:hover { color: white; background: rgba(255,255,255,0.05); }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <nav class="fixed top-0 w-full z-[100] glass py-5">
-        <div class="max-w-[1400px] mx-auto px-6 flex items-center justify-between gap-6">
-            <h1 class="text-xl font-black italic uppercase gradient-text shrink-0">Aura-AI</h1>
-            
-            <div class="flex items-center gap-6 overflow-x-auto no-scrollbar py-2 px-4 bg-white/5 rounded-full border border-white/5">
-                <a href="index.html" class="nav-link text-white border-b border-blue-500">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="portfolio.html" class="nav-link">Portfolio</a>
-                <a href="labs.html" class="nav-link">Labs</a>
-                <a href="neural-nets.html" class="nav-link">Neural-Nets</a>
-                <a href="careers.html" class="nav-link">Careers</a>
-                <a href="team.html" class="nav-link">Team</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
-                <a href="pricing.html" class="nav-link">Pricing</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="privacy.html" class="nav-link">Privacy</a>
+    <!-- NAV WITH WRAP (No Buttons Will Hide) -->
+    <nav class="fixed top-0 w-full z-[100] glass py-3">
+        <div class="max-w-[1400px] mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <h1 class="text-xl font-black italic uppercase gradient-text">Aura-AI</h1>
+                
+                <!-- Flex Wrap allows buttons to go to next line on mobile -->
+                <div class="flex flex-wrap gap-2 items-center justify-center bg-white/5 p-2 rounded-2xl border border-white/5">
+                    <a href="index.html" class="nav-link text-white">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                    <a href="labs.html" class="nav-link">Labs</a>
+                    <a href="neural-nets.html" class="nav-link">Neural</a>
+                    <a href="careers.html" class="nav-link">Careers</a>
+                    <a href="team.html" class="nav-link">Team</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="privacy.html" class="nav-link">Privacy</a>
+                    <a href="admin.html" class="bg-blue-600 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase">Admin</a>
+                </div>
             </div>
-
-            <a href="admin.html" class="bg-blue-600 text-white px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all shrink-0">Admin</a>
         </div>
     </nav>
 
-    <section class="h-[90vh] flex flex-col justify-center items-center text-center px-6">
-        <div class="bg-blue-600/10 border border-blue-600/30 px-4 py-1 rounded-full mb-8">
-            <span class="text-blue-500 font-black tracking-[0.5em] text-[9px] uppercase">Elite AI Agency Network</span>
-        </div>
-        <h2 class="text-6xl md:text-8xl font-black leading-tight mb-8">Aura-AI <br> <span class="gradient-text italic underline decoration-blue-500/20">Ecosystem.</span></h2>
-        <p class="text-zinc-500 max-w-2xl text-sm md:text-base mb-12 leading-relaxed">A massive network of 13+ interconnected digital platforms. From Neural Nets to Creative Labs.</p>
-        <div class="flex gap-4">
-            <a href="#live-work" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:scale-105 transition-all">View All Work</a>
-        </div>
+    <!-- HERO -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32">
+        <h2 class="text-5xl md:text-8xl font-black leading-tight mb-6 uppercase italic">Aura-AI <br> <span class="gradient-text">Ecosystem.</span></h2>
+        <p class="text-zinc-500 max-w-xl text-xs mb-10 uppercase tracking-widest">Master Control for 13 Global Nodes</p>
+        <a href="#live-work" class="bg-white text-black px-10 py-4 rounded-xl font-black uppercase text-xs">Explore Work</a>
     </section>
 
-    <section id="live-work" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 mb-20">
-            <h3 class="text-4xl font-black uppercase italic italic">Live Feed</h3>
-            <div class="h-[1px] flex-grow bg-white/10"></div>
-            <p class="text-[9px] font-bold text-zinc-600 uppercase tracking-widest">Real-time Cloud Updates</p>
-        </div>
-
-        <div id="project-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div class="col-span-full text-center py-20 text-zinc-700 font-bold uppercase tracking-widest text-xs animate-pulse">
-                Syncing with Database...
-            </div>
+    <!-- LIVE FEED -->
+    <section id="live-work" class="py-20 px-6 max-w-7xl mx-auto">
+        <h3 class="text-2xl font-black uppercase italic mb-10 border-b border-white/10 pb-4 italic">Live Feed</h3>
+        <div id="project-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="col-span-full text-center text-zinc-600 uppercase text-[10px] tracking-widest py-10">Fetching from Cloud...</div>
         </div>
     </section>
-
-    <footer class="py-20 border-t border-white/5 text-center bg-[#080808]">
-        <p class="text-zinc-700 text-[10px] font-black uppercase tracking-[0.8em]">Aura AI Agency • 13 Nodes Live • 2026</p>
-    </footer>
 
     <script>
         const firebaseConfig = {
@@ -94,28 +77,30 @@
         async function fetchProjects() {
             const container = document.getElementById('project-container');
             try {
-                const snapshot = await db.collection("projects").orderBy("time", "desc").get();
-                container.innerHTML = ""; 
+                // Simplified query to fix blank page issue
+                const snapshot = await db.collection("projects").get();
+                
                 if(snapshot.empty) {
-                    container.innerHTML = "<p class='col-span-full text-center text-zinc-600'>No projects in cloud.</p>";
+                    container.innerHTML = "<p class='col-span-full text-center text-zinc-500'>No projects in cloud. Please add from Admin Panel.</p>";
                     return;
                 }
+                
+                container.innerHTML = ""; 
                 snapshot.forEach((doc) => {
                     const data = doc.data();
                     container.innerHTML += `
-                        <div class="bg-zinc-900/30 border border-white/5 p-5 rounded-[2.5rem] group hover:border-blue-600/40 transition-all">
-                            <img src="${data.imageUrl}" class="w-full h-64 object-cover rounded-[1.8rem] mb-6 grayscale group-hover:grayscale-0 transition-all duration-500">
-                            <h4 class="text-2xl font-black uppercase italic mb-3 text-blue-500">${data.title}</h4>
-                            <p class="text-zinc-500 text-sm mb-6 line-clamp-3">${data.description}</p>
-                            <div class="h-[1px] w-full bg-white/5 mb-4"></div>
-                            <span class="text-[9px] font-black uppercase tracking-widest text-zinc-600">Aura Verified Project</span>
+                        <div class="bg-zinc-900/50 border border-white/10 p-4 rounded-[2rem] hover:border-blue-500 transition-all">
+                            <img src="${data.imageUrl}" class="w-full h-56 object-cover rounded-2xl mb-4 shadow-2xl">
+                            <h4 class="text-xl font-bold uppercase italic text-blue-500">${data.title}</h4>
+                            <p class="text-zinc-400 text-xs mt-2">${data.description}</p>
                         </div>
                     `;
                 });
-            } catch (e) { console.log(e); }
+            } catch (e) { 
+                container.innerHTML = "<p class='text-red-500'>Connection Error.</p>";
+            }
         }
         window.onload = fetchProjects;
     </script>
 </body>
 </html>
-
