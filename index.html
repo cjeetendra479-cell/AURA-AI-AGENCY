@@ -8,102 +8,95 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #050505; color: white; margin:0; overflow-x: hidden; }
-        
-        /* Fixed Navbar - Kabhi nahi hilega */
-        .master-nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        
-        /* Buttons Style */
-        .nav-btn { color: #71717a; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 8px 16px; border-radius: 99px; transition: 0.3s; cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
-        .nav-btn:hover { color: white; background: rgba(255,255,255,0.05); }
-        .nav-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
-        
-        /* Content Sections */
-        .tab-section { display: none; padding-top: 140px; animation: slideUp 0.4s ease-out; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #000; color: white; margin:0; }
+        .glass-nav { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(0,0,0,0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-btn { color: #555; font-size: 9px; font-weight: 800; text-transform: uppercase; padding: 10px 14px; cursor: pointer; transition: 0.2s; white-space: nowrap; border-radius: 99px; }
+        .nav-btn.active { color: #fff; background: #3b82f6; }
+        .tab-section { display: none; padding-top: 160px; min-height: 100vh; animation: fadeIn 0.3s ease-in; }
         .tab-section.active { display: block; }
-        
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- STICKY HEADER -->
-    <header class="master-nav py-4">
-        <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row items-center gap-4">
-            <h1 class="text-xl font-black italic uppercase tracking-tighter text-blue-500 shrink-0">AURA-AI</h1>
-            
-            <!-- All 13+ Page Links as Tabs -->
-            <div class="flex flex-wrap gap-2 items-center justify-center overflow-x-auto no-scrollbar w-full">
-                <div class="nav-btn active" onclick="switchTab(event, 'home')">Home</div>
-                <div class="nav-btn" onclick="switchTab(event, 'about')">About</div>
-                <div class="nav-btn" onclick="switchTab(event, 'services')">Services</div>
-                <div class="nav-btn" onclick="switchTab(event, 'portfolio')">Portfolio</div>
-                <div class="nav-btn" onclick="switchTab(event, 'labs')">Labs</div>
-                <div class="nav-btn" onclick="switchTab(event, 'neural')">Neural-Nets</div>
-                <div class="nav-btn" onclick="switchTab(event, 'team')">Team</div>
-                <div class="nav-btn" onclick="switchTab(event, 'faq')">FAQ</div>
-                <div class="nav-btn" onclick="switchTab(event, 'contact')">Contact</div>
-                <a href="admin.html" class="bg-white text-black px-4 py-1.5 rounded-full text-[9px] font-black uppercase ml-2">Admin</a>
+    <nav class="glass-nav py-4">
+        <div class="max-w-[1400px] mx-auto px-4 flex flex-col items-center gap-4">
+            <h1 class="text-xl font-black italic text-blue-500 uppercase">AURA-AI</h1>
+            <div class="flex gap-1 overflow-x-auto no-scrollbar w-full justify-start md:justify-center px-2">
+                <div class="nav-btn active" onclick="showTab(event, 'home')">Home</div>
+                <div class="nav-btn" onclick="showTab(event, 'about')">About</div>
+                <div class="nav-btn" onclick="showTab(event, 'services')">Services</div>
+                <div class="nav-btn" onclick="showTab(event, 'labs')">Labs</div>
+                <div class="nav-btn" onclick="showTab(event, 'neural')">Neural-Nets</div>
+                <div class="nav-btn" onclick="showTab(event, 'contact')">Contact</div>
+                <a href="admin.html" class="bg-white text-black px-4 py-2 rounded-full text-[9px] font-black uppercase">Admin</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- CONTENT AREA -->
     <main class="max-w-7xl mx-auto px-6">
-        
-        <!-- 1. HOME SECTION -->
-        <section id="home" class="tab-section active text-center">
-            <h2 class="text-5xl md:text-8xl font-black italic mb-4">NEXT-GEN <br> <span class="text-blue-500">AGENCY.</span></h2>
-            <p class="text-zinc-500 uppercase tracking-[0.5em] text-[10px] mb-20">Premium AI Solutions for Global Clients</p>
-            
-            <div id="project-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <!-- Data from Firebase -->
-                <p class="col-span-full text-center text-zinc-700 animate-pulse">Syncing Cloud Database...</p>
+        <!-- HOME -->
+        <section id="home" class="tab-section active">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-black italic mb-4 uppercase">Next-Gen <br><span class="text-blue-500 italic">Ecosystem.</span></h2>
+                <p class="text-zinc-600 tracking-[0.4em] text-[10px] font-bold">Premium Digital Infrastructure</p>
+            </div>
+            <!-- Feed Container -->
+            <div id="project-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- If No Data or Loading -->
+                <div class="col-span-full text-center py-20">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-blue-500 mb-4"></div>
+                    <p class="text-zinc-700 uppercase text-[10px] tracking-widest">Fetching Cloud Nodes...</p>
+                </div>
             </div>
         </section>
 
-        <!-- 2. ABOUT SECTION -->
+        <!-- ABOUT (Added static content so it's NEVER blank) -->
         <section id="about" class="tab-section">
             <div class="max-w-3xl">
-                <h2 class="text-4xl font-black uppercase italic mb-8 text-blue-500">Our Story</h2>
-                <p class="text-zinc-400 text-xl leading-relaxed border-l-4 border-blue-600 pl-8">
-                    Aura-AI is a high-performance digital agency based in Delhi. We don't just build websites; we build scalable digital ecosystems powered by AI.
-                </p>
+                <h2 class="text-4xl font-black italic text-blue-500 mb-6 uppercase">The Agency</h2>
+                <p class="text-zinc-400 text-xl leading-relaxed">Aura-AI is a high-end digital agency based in Delhi, specializing in Neural Networks and Scalable Web Systems.</p>
             </div>
         </section>
 
-        <!-- 3. SERVICES SECTION -->
+        <!-- SERVICES -->
         <section id="services" class="tab-section">
-            <h2 class="text-4xl font-black uppercase italic mb-12">Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5">
-                    <h4 class="text-2xl font-bold text-blue-500 mb-4 uppercase italic">Web Systems</h4>
-                    <p class="text-zinc-500">Building dynamic, cloud-connected platforms using Firebase and Modern JS.</p>
+            <h2 class="text-4xl font-black italic text-blue-500 mb-10 uppercase">Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-8 bg-zinc-900/50 rounded-[2.5rem] border border-white/5">
+                    <h4 class="text-xl font-bold text-white mb-2 uppercase">AI Integration</h4>
+                    <p class="text-zinc-500 text-sm">Deploying custom LLMs and automated logic systems.</p>
                 </div>
-                <div class="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5">
-                    <h4 class="text-2xl font-bold text-purple-500 mb-4 uppercase italic">AI Integration</h4>
-                    <p class="text-zinc-500">Deploying neural networks and automated logic for complex business tasks.</p>
+                <div class="p-8 bg-zinc-900/50 rounded-[2.5rem] border border-white/5">
+                    <h4 class="text-xl font-bold text-white mb-2 uppercase">Architecture</h4>
+                    <p class="text-zinc-500 text-sm">Building ultra-fast cloud-native web platforms.</p>
                 </div>
             </div>
+        </section>
+
+        <!-- LABS/NEURAL -->
+        <section id="labs" class="tab-section">
+            <h2 class="text-4xl font-black italic text-zinc-700 uppercase">Aura Labs</h2>
+            <p class="mt-4 text-zinc-500">Experimental technologies under development.</p>
+        </section>
+        
+        <section id="neural" class="tab-section">
+            <h2 class="text-4xl font-black italic text-zinc-700 uppercase">Neural Nets</h2>
+            <p class="mt-4 text-zinc-500">Custom machine learning models for enterprise data.</p>
         </section>
 
     </main>
 
     <script>
         // SMART TAB SWITCHER
-        function switchTab(evt, tabName) {
-            const sections = document.querySelectorAll('.tab-section');
-            const buttons = document.querySelectorAll('.nav-btn');
-            
-            sections.forEach(s => s.classList.remove('active'));
-            buttons.forEach(b => b.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            evt.currentTarget.classList.add('active');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function showTab(evt, name) {
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+            if (evt) evt.currentTarget.classList.add('active');
+            window.scrollTo(0,0);
         }
 
         // FIREBASE SETUP
@@ -115,29 +108,41 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        // LOAD PROJECTS WITH IMAGE FIX
         async function loadProjects() {
             const feed = document.getElementById('project-feed');
             try {
-                const snap = await db.collection("projects").get();
-                if(snap.empty) { feed.innerHTML = "<p class='col-span-full text-center py-20 text-zinc-800'>Project Cloud Empty.</p>"; return; }
-                
-                feed.innerHTML = "";
-                snap.forEach(doc => {
-                    const d = doc.data();
-                    feed.innerHTML += `
-                        <div class="bg-zinc-900/40 border border-white/5 p-4 rounded-[2.5rem] hover:border-blue-500/50 transition-all group">
-                            <div class="overflow-hidden rounded-3xl mb-4">
-                                <img src="${d.imageUrl}" class="w-full h-52 object-cover group-hover:scale-105 transition-all">
+                // Real-time listener for faster loading
+                db.collection("projects").onSnapshot((snap) => {
+                    if(snap.empty) {
+                        feed.innerHTML = "<p class='col-span-full text-center text-zinc-800 uppercase text-[10px] py-20'>No Projects in Cloud</p>";
+                        return;
+                    }
+                    
+                    let html = "";
+                    snap.forEach(doc => {
+                        const d = doc.data();
+                        // Placeholder image if d.imageUrl is empty
+                        const img = d.imageUrl && d.imageUrl.trim() !== "" ? d.imageUrl : 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800';
+                        
+                        html += `
+                            <div class="bg-zinc-900/40 border border-white/5 p-4 rounded-[2.5rem] group">
+                                <div class="overflow-hidden rounded-[1.8rem] mb-4 aspect-video bg-zinc-800">
+                                    <img src="${img}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" 
+                                         onerror="this.src='https://via.placeholder.com/800x450?text=Aura+Project'">
+                                </div>
+                                <h4 class="text-lg font-bold text-white uppercase italic px-2">${d.title}</h4>
+                                <p class="text-zinc-500 text-[9px] mt-1 px-2 uppercase tracking-widest">${d.description || 'Verified Deployment'}</p>
                             </div>
-                            <h4 class="text-xl font-black uppercase italic text-white">${d.title}</h4>
-                            <p class="text-zinc-500 text-[10px] mt-2 leading-relaxed">${d.description}</p>
-                        </div>
-                    `;
+                        `;
+                    });
+                    feed.innerHTML = html;
                 });
-            } catch(e) { console.log(e); }
+            } catch(e) {
+                feed.innerHTML = "<p class='text-red-500'>Connection Error.</p>";
+            }
         }
         window.onload = loadProjects;
     </script>
 </body>
 </html>
-
