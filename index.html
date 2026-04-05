@@ -137,4 +137,36 @@
 </body>
 </html>
 
+function checkHomeData() {
+    const homeContainer = document.getElementById('home-list');
+
+    // Sirf wahi folder check kar rahe hain jo aapne banaya hai
+    db.collection("home_data").onSnapshot((snap) => {
+        let html = "";
+        
+        if (snap.empty) {
+            // Agar folder khali hai ya spelling galat hai
+            html = `<p class="text-red-500 uppercase text-xs p-10">Folder 'home_data' nahi mila ya khali hai!</p>`;
+        } else {
+            snap.forEach(doc => {
+                const d = doc.data();
+                html += `
+                    <div class="project-card">
+                        <div class="h-80 overflow-hidden rounded-[3rem] bg-zinc-900 border border-zinc-800">
+                            <img src="${d.imageUrl}" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-2xl font-black italic uppercase mt-4 text-white">${d.title}</h4>
+                        <p class="text-blue-500 text-[10px] font-bold uppercase tracking-widest">${d.description}</p>
+                    </div>
+                `;
+            });
+        }
+        
+        if(homeContainer) {
+            homeContainer.innerHTML = html;
+        }
+    });
+}
+
+window.onload = checkHomeData;
 
