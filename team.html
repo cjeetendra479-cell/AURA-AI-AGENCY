@@ -3,55 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | AURA AI</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Our Team | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root { --neon: #00f2ff; --bg: #050505; --card: #111; --accent: #7000ff; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding-top: 100px; }
+        
+        /* Fixed Navbar */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; backdrop-filter: blur(10px); }
+        .logo { font-weight: 800; color: var(--neon); letter-spacing: 2px; font-size: 1.5rem; text-shadow: 0 0 10px var(--neon); }
+        .nav-links { list-style: none; display: flex; gap: 20px; margin: 0; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 3rem; color: var(--neon); text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+        .header p { color: #666; margin-top: 15px; letter-spacing: 1px; }
+
+        /* Team Grid */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .team-card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 30px; text-align: center; transition: 0.4s; position: relative; overflow: hidden; }
+        .team-card:hover { border-color: var(--neon); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15); }
+
+        .member-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--neon); margin: 0 auto 20px; overflow: hidden; background: #000; padding: 5px; }
+        .member-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: grayscale(100%); transition: 0.5s; }
+        .team-card:hover img { filter: grayscale(0%); transform: scale(1.1); }
+
+        .team-card h3 { font-size: 1.4rem; color: #fff; margin: 10px 0 5px; letter-spacing: 1px; }
+        .team-card .role { color: var(--neon); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; display: block; margin-bottom: 15px; }
+        .team-card p { color: #777; font-size: 0.9rem; line-height: 1.6; }
+
+        .social-nodes { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .social-nodes a { color: #444; font-size: 1.2rem; text-decoration: none; transition: 0.3s; }
+        .social-nodes a:hover { color: var(--neon); }
+
+        @media (max-width: 768px) { h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION (Same as Index) -->
-    <nav class="fixed top-0 w-full z-[100] glass py-4 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-black italic uppercase gradient-text">Aura-AI</h1>
-            <div class="flex gap-5 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 overflow-x-auto whitespace-nowrap px-4">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="about.html" class="hover:text-white">About</a>
-                <a href="services.html" class="hover:text-white">Services</a>
-                <a href="portfolio.html" class="hover:text-white font-bold text-white">Portfolio</a>
-                <a href="team.html" class="text-blue-500 border-b border-blue-500">Team</a>
-                <a href="contact.html" class="hover:text-white">Contact</a>
-                <a href="admin.html" class="bg-blue-600 text-white px-3 py-1 rounded-full text-[9px]">Admin</a>
-            </div>
-        </div>
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html" class="active">Team</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- TEAM HERO -->
-    <section class="pt-40 pb-20 px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-black uppercase italic mb-6">The <span class="gradient-text">Brains</span> Behind Aura</h2>
-        <p class="text-zinc-500 max-w-2xl mx-auto">Meet the visionaries building the next generation of AI-powered digital experiences.</p>
-    </section>
+    <div class="container">
+        <div class="header">
+            <h1 id="team-title">OUR TEAM</h1>
+            <p>The neural intelligence behind AURA AI AGENCY deployment.</p>
+        </div>
 
-    <!-- TEAM GRID -->
-    <section class="max-w-7xl mx-auto px-6 pb-32">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <!-- Member 1: Founder (Aapka Profile) -->
-            <div class="glass p-8 rounded-[2.5rem] text-center group hover:border-blue-500/50 transition-all">
-                <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 p-1">
-                    <div class="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
-                        <span class="text-3xl font-black text-white">JC</span> <!-- Aapke Initials -->
-                    </div>
+        <div class="team-grid">
+            <!-- Member 1: Founder (Main Data from Firebase) -->
+            <div class="team-card">
+                <div class="member-img">
+                    <img id="m1-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300" alt="Founder">
                 </div>
-                <h4 class="text-2xl font-bold mb-1 uppercase italic">Jeetendra</h4>
-                <p class="text-blue-500 text-xs font-black uppercase tracking-widest mb-4">Founder & Lead Developer</p>
-                <p class="text-zinc-500 text-sm leading-relaxed">Full-stack expert specializing in AI-integrated cloud systems and Firebase architecture.</p>
+                <h3 id="m1-name">JEETU</h3>
+                <span class="role" id="m1-role">Founder & Lead Architect</span>
+                <p id="m1-bio">Visionary specialist focused on high-scale AI reselling and futuristic web infrastructure.</p>
+                <div class="social-nodes">
+                    <a href="#">LN</a> <a href="#">GH</a> <a href="#">TW</a>
+                </div>
             </div>
 
-            <!-- Member 2 -->
-            <div class="glass p-8 rounded-[2.5rem] text
-              
+            <!-- Member 2: Lead Dev -->
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300" alt="Dev">
+                </div>
+                <h3>ALEX NEURAL</h3>
+                <span class="role">Chief Tech Officer</span>
+                <p>Expert in Firebase ecosystems and dynamic data integration across multi-node systems.</p>
+                <div class="social-nodes">
+                    <a href="#">LN</a> <a href="#">GH</a>
+                </div>
+            </div>
+
+            <!-- Member 3: UI Designer -->
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300" alt="Designer">
+                </div>
+                <h3>SARA CYBER</h3>
+                <span class="role">Head of UX Design</span>
+                <p>Specializing in Cyberpunk aesthetics and neural-responsive user interfaces for global clients.</p>
+                <div class="social-nodes">
+                    <a href="#">LN</a> <a href="#">DR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Aura AI Agency Firebase Config
+        const firebaseConfig = {
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        async function syncTeam() {
+            try {
+                // 'team_data' collection se Founder ki details fetch karna
+                const snapshot = await db.collection('team_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    if(data.founderName) document.getElementById('m1-name').innerText = data.founderName;
+                    if(data.founderRole) document.getElementById('m1-role').innerText = data.founderRole;
+                    if(data.founderBio) document.getElementById('m1-bio').innerText = data.founderBio;
+                    if(data.founderImg) document.getElementById('m1-img').src = data.founderImg;
+                }
+            } catch (err) {
+                console.log("Team local node active.");
+            }
+        }
+
+        window.onload = syncTeam;
+    </script>
+</body>
+</html>
