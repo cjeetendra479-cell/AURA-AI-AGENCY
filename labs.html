@@ -1,56 +1,109 @@
-<!-- LABS SECTION (UPDATED) -->
-<section id="labs" class="tab-section">
-    <div class="mb-12">
-        <h2 class="text-5xl font-black italic text-blue-500 uppercase tracking-tighter">Aura Labs</h2>
-        <p class="text-zinc-500 mt-2 uppercase tracking-[0.3em] text-[10px]">Experimental Research & Neural Prototypes</p>
-    </div>
-
-    <!-- Labs Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <style>
+        :root { --neon: #00f2ff; --bg: #050505; --accent: #ff00ff; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding-top: 100px; }
         
-        <!-- Experiment 1 -->
-        <div class="group relative bg-zinc-900/40 border border-white/5 p-8 rounded-[2.5rem] overflow-hidden hover:border-blue-500/50 transition-all duration-500">
-            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
-                <div class="h-2 w-2 bg-blue-500 rounded-full animate-ping"></div>
-            </div>
-            <span class="text-[10px] font-bold text-blue-500 bg-blue-500/10 px-3 py-1 rounded-full uppercase">Active Prototype</span>
-            <h4 class="text-2xl font-black italic mt-6 mb-3 uppercase text-white">Neural-V3 Engine</h4>
-            <p class="text-zinc-500 text-sm leading-relaxed mb-6">Testing real-time pattern recognition using custom synthetic datasets. Achieving 98% accuracy in localized nodes.</p>
-            <div class="flex items-center gap-2 text-[10px] font-black uppercase text-zinc-400">
-                <span>Status: Testing</span>
-                <span class="h-1 w-1 bg-zinc-700 rounded-full"></span>
-                <span>Version: 0.8.2</span>
-            </div>
+        /* Navbar Fixed */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; }
+        .logo { font-weight: bold; color: var(--neon); letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        
+        /* Lab Hero Section */
+        .lab-hero { text-align: center; border: 1px solid #222; padding: 40px; border-radius: 20px; background: radial-gradient(circle at top, #111, #050505); position: relative; overflow: hidden; }
+        #page-title { font-size: 3.5rem; color: var(--neon); text-transform: uppercase; margin: 0; letter-spacing: 10px; }
+        #page-desc { color: #666; margin: 20px auto; max-width: 600px; font-size: 1.1rem; }
+        #page-img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; margin-top: 30px; border: 1px solid var(--accent); opacity: 0.7; }
+
+        /* Experimental Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .lab-card { background: #111; border: 1px solid #222; padding: 30px; border-radius: 15px; transition: 0.4s; position: relative; }
+        .lab-card:hover { border-color: var(--neon); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
+        .status-tag { position: absolute; top: 15px; right: 15px; font-size: 10px; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
+        
+        .progress-bar { width: 100%; height: 4px; background: #222; margin-top: 20px; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
+
+        @media (max-width: 768px) { #page-title { font-size: 2rem; letter-spacing: 5px; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="labs.html" style="color: var(--neon);">Labs</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html" style="border: 1px solid var(--neon); padding: 5px 10px; border-radius: 4px;">Admin</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="lab-hero">
+            <h1 id="page-title">NEURAL LABS</h1>
+            <p id="page-desc">Experimental zone for next-gen artificial intelligence and automated systems.</p>
+            <img id="page-img" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200" alt="Lab Interface">
         </div>
 
-        <!-- Experiment 2 -->
-        <div class="group bg-zinc-900/40 border border-white/5 p-8 rounded-[2.5rem] hover:border-purple-500/50 transition-all duration-500">
-            <span class="text-[10px] font-bold text-purple-500 bg-purple-500/10 px-3 py-1 rounded-full uppercase">Research</span>
-            <h4 class="text-2xl font-black italic mt-6 mb-3 uppercase text-white">Bio-Sync UI</h4>
-            <p class="text-zinc-500 text-sm leading-relaxed mb-6">Developing interface components that adapt to user behavior patterns using predictive heat-mapping.</p>
-            <div class="flex items-center gap-2 text-[10px] font-black uppercase text-zinc-400">
-                <span>Status: Concept</span>
-                <span class="h-1 w-1 bg-zinc-700 rounded-full"></span>
-                <span>Priority: High</span>
+        <div class="grid">
+            <!-- Project 1 -->
+            <div class="lab-card">
+                <span class="status-tag">In Development</span>
+                <h3 style="color: var(--neon);">Project: PowerTech</h3>
+                <p style="color: #888; font-size: 0.9rem;">Building high-fidelity neural responsive landing pages for global resellers.</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="lab-card">
+                <span class="status-tag" style="color: #00ff88; border-color: #00ff88;">Beta Testing</span>
+                <h3 style="color: var(--neon);">Core: Aura-V3</h3>
+                <p style="color: #888; font-size: 0.9rem;">Advanced automated deployment protocols for zero-investment scaling.</p>
+                <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
             </div>
         </div>
-
-        <!-- Experiment 3 -->
-        <div class="group bg-zinc-900/40 border border-white/5 p-8 rounded-[2.5rem] hover:border-emerald-500/50 transition-all duration-500">
-            <span class="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full uppercase">Stable</span>
-            <h4 class="text-2xl font-black italic mt-6 mb-3 uppercase text-white">Quantum Auth</h4>
-            <p class="text-zinc-500 text-sm leading-relaxed mb-6">Implementing non-linear encryption keys for ultra-secure administrative access points.</p>
-            <div class="flex items-center gap-2 text-[10px] font-black uppercase text-zinc-400">
-                <span>Status: Deployed</span>
-                <span class="h-1 w-1 bg-zinc-700 rounded-full"></span>
-                <span>Security: Tier-1</span>
-            </div>
-        </div>
-
     </div>
 
-    <!-- Background Decoration for Labs -->
-    <div class="mt-20 p-10 border border-dashed border-white/5 rounded-[3rem] text-center">
-        <p class="text-zinc-600 italic text-sm">"Pushing the boundaries of what's possible in the Aura-AI ecosystem."</p>
-    </div>
-</section>
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        async function syncLabs() {
+            try {
+                const snapshot = await db.collection('labs_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    if(data.title) document.getElementById('page-title').innerText = data.title;
+                    if(data.description) document.getElementById('page-desc').innerText = data.description;
+                    if(data.imageUrl) document.getElementById('page-img').src = data.imageUrl;
+                }
+            } catch (e) { console.log("Labs running in decentralized offline mode."); }
+        }
+        syncLabs();
+    </script>
+</body>
+</html>
