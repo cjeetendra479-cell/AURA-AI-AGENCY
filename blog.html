@@ -3,81 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Insights | AURA Blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <title>Blog | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gradient-text { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        :root { --neon: #00f2ff; --bg: #080808; --card: #121212; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding-top: 90px; }
+        
+        /* Navbar Fixed */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); border-bottom: 1px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; backdrop-filter: blur(5px); }
+        .logo { font-weight: bold; color: var(--neon); letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; overflow-x: auto; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; transition: 0.3s; white-space: nowrap; }
+        .nav-links a:hover { color: var(--neon); }
+        .admin-btn { border: 1px solid var(--neon); padding: 5px 10px; border-radius: 4px; }
+
+        /* Blog Layout */
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .blog-header { text-align: center; margin-bottom: 50px; }
+        .blog-header h1 { font-size: 3rem; color: var(--neon); margin: 0; text-transform: uppercase; }
+        
+        .main-post { background: var(--card); border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.3s; }
+        .main-post:hover { border-color: var(--neon); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); }
+        
+        #page-img { width: 100%; height: 400px; object-fit: cover; border-bottom: 1px solid #222; }
+        
+        .post-content { padding: 30px; }
+        .post-meta { color: var(--neon); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        #page-title { font-size: 2rem; margin: 10px 0; line-height: 1.2; }
+        #page-desc { color: #aaa; line-height: 1.8; font-size: 1.1rem; }
+
+        /* Loading Skeleton */
+        .loading { text-align: center; color: #555; padding: 50px; font-style: italic; }
+
+        @media (max-width: 600px) { #page-title { font-size: 1.5rem; } #page-img { height: 250px; } }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav class="fixed top-0 w-full z-[100] glass py-4 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-black italic uppercase gradient-text">Aura-AI</h1>
-            <div class="flex gap-5 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 overflow-x-auto whitespace-nowrap px-4">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="blog.html" class="text-blue-500 border-b border-blue-500 pb-1">Blog</a>
-                <a href="admin.html" class="bg-blue-600 text-white px-3 py-1 rounded-full text-[9px]">Admin</a>
-            </div>
-        </div>
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html" style="color: var(--neon);">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html" class="admin-btn">Admin</a></li>
+        </ul>
     </nav>
 
-    <!-- BLOG HERO -->
-    <section class="pt-40 pb-20 px-6 text-center">
-        <h2 class="text-5xl md:text-7xl font-black uppercase italic mb-6 leading-tight">Latest <span class="gradient-text">Insights</span></h2>
-        <p class="text-zinc-500 max-w-xl mx-auto font-medium text-sm">Discover how AI and No-Code tools are changing the digital landscape of India.</p>
-    </section>
-
-    <!-- BLOG LIST -->
-    <section class="max-w-7xl mx-auto px-6 pb-32">
-        <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- Blogs load here -->
-            <p class="text-zinc-600 animate-pulse uppercase tracking-widest text-[10px]">Fetching latest stories...</p>
+    <div class="container">
+        <div class="blog-header">
+            <span style="color: #444; letter-spacing: 5px;">INTEL & INSIGHTS</span>
+            <h1>TECH JOURNAL</h1>
         </div>
-    </section>
+
+        <div id="blog-loader" class="loading">Establishing uplink to database...</div>
+
+        <article class="main-post" id="post-container" style="display: none;">
+            <img id="page-img" src="" alt="Blog Cover">
+            <div class="post-content">
+                <span class="post-meta">Latest Update // Neural Network</span>
+                <h2 id="page-title">Loading Title...</h2>
+                <p id="page-desc">Synchronizing data nodes for full transmission...</p>
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #222; color: #555; font-size: 0.9rem;">
+                    Published by: Aura AI Systems • 5 min read
+                </div>
+            </div>
+        </article>
+    </div>
 
     <script>
         const firebaseConfig = {
-            apiKey: "AIzaSyCBK6Nz1cd4A0x7wOnLG2-eNVfDzSgDfXo",
-            authDomain: "aura-ai-agency.firebaseapp.com",
-            projectId: "aura-ai-agency",
-            storageBucket: "aura-ai-agency.firebasestorage.app",
-            messagingSenderId: "859076065133",
-            appId: "1:859076065133:web:f6078dabf975bf01280c64",
-            measurementId: "G-0MRWWPVZTM"
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
         };
+
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        async function loadBlogs() {
-            const container = document.getElementById('blog-container');
+        async function loadBlog() {
             try {
-                const snapshot = await db.collection("blogs").orderBy("time", "desc").get();
-                container.innerHTML = "";
-                snapshot.forEach((doc) => {
-                    const data = doc.data();
-                    const blogHTML = `
-                        <div class="group cursor-pointer">
-                            <div class="relative overflow-hidden rounded-[2.5rem] mb-6 aspect-video">
-                                <img src="${data.imageUrl}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
-                                <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-bold uppercase border border-white/10">Tech News</div>
-                            </div>
-                            <h3 class="text-2xl font-black italic uppercase mb-3 group-hover:text-blue-500 transition-colors">${data.title}</h3>
-                            <p class="text-zinc-500 text-sm leading-relaxed line-clamp-3 mb-4">${data.content}</p>
-                            <span class="text-blue-500 text-[10px] font-black uppercase tracking-widest border-b border-blue-500/20 pb-1">Read Article —></span>
-                        </div>
-                    `;
-                    container.innerHTML += blogHTML;
-                });
-            } catch (e) { container.innerHTML = "Error loading blogs."; }
+                const snapshot = await db.collection('blog_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    
+                    document.getElementById('page-title').innerText = data.title || "NO TITLE SET";
+                    document.getElementById('page-desc').innerText = data.description || "No content available.";
+                    document.getElementById('page-img').src = data.imageUrl || "https://via.placeholder.com/1200x600";
+                    
+                    document.getElementById('blog-loader').style.display = 'none';
+                    document.getElementById('post-container').style.display = 'block';
+                }
+            } catch (error) {
+                console.log("Error:", error);
+                document.getElementById('blog-loader').innerText = "System Offline. Check Connection.";
+            }
         }
-        window.onload = loadBlogs;
+
+        window.onload = loadBlog;
     </script>
 </body>
 </html>
