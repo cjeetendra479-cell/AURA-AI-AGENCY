@@ -3,22 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join the Evolution | AURA Careers</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Careers | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <style>
+        :root { --neon: #00f2ff; --bg: #0a0a0a; --card: #151515; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding-top: 90px; }
+        
+        /* Fixed Navbar */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; }
+        .logo { font-weight: bold; color: var(--neon); letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon); }
+
+        .hero-section { text-align: center; padding: 60px 20px; background: linear-gradient(to bottom, #111, #0a0a0a); }
+        #page-title { font-size: 3.5rem; color: var(--neon); margin: 0; text-transform: uppercase; }
+        #page-desc { max-width: 700px; margin: 20px auto; color: #aaa; font-size: 1.2rem; line-height: 1.6; }
+
+        .image-box { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        #page-img { width: 100%; height: 350px; object-fit: cover; border-radius: 15px; border: 1px solid #333; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+
+        /* Job Listings */
+        .jobs-container { max-width: 900px; margin: 50px auto; padding: 20px; }
+        .job-card { background: var(--card); border: 1px solid #222; padding: 25px; border-radius: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .job-card:hover { border-color: var(--neon); transform: translateX(10px); }
+        .job-info h3 { margin: 0; color: white; font-size: 1.4rem; }
+        .job-info p { margin: 5px 0 0; color: #666; font-size: 0.9rem; }
+        .apply-btn { background: transparent; border: 1px solid var(--neon); color: var(--neon); padding: 10px 20px; border-radius: 5px; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; }
+        .apply-btn:hover { background: var(--neon); color: black; }
+
+        @media (max-width: 768px) { .job-card { flex-direction: column; text-align: center; gap: 20px; } #page-title { font-size: 2.5rem; } }
+    </style>
 </head>
-<body class="bg-[#020617] text-slate-300">
-    <section class="max-w-4xl mx-auto py-32 px-6 text-center">
-        <h2 class="text-4xl md:text-6xl font-black text-white mb-8 italic">WE ARE <span class="text-blue-600 text-outline">HIRING.</span></h2>
-        <div class="space-y-4">
-            <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl flex justify-between items-center hover:border-blue-500 transition cursor-pointer">
-                <span class="font-bold text-white uppercase tracking-widest text-xs">AI Research Engineer</span>
-                <span class="text-blue-400 text-[10px] font-black underline">APPLY →</span>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="careers.html" style="color: var(--neon);">Careers</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-section">
+        <h1 id="page-title">JOIN THE ELITE</h1>
+        <p id="page-desc">Synchronizing career nodes with global intelligence networks...</p>
+    </div>
+
+    <div class="image-box">
+        <img id="page-img" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200" alt="Work Culture">
+    </div>
+
+    <div class="jobs-container">
+        <h2 style="border-left: 4px solid var(--neon); padding-left: 15px; margin-bottom: 30px;">OPEN POSITIONS</h2>
+        
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Neural Architect</h3>
+                <p>Remote • Full-time • AI Development</p>
             </div>
-            <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl flex justify-between items-center hover:border-blue-500 transition cursor-pointer">
-                <span class="font-bold text-white uppercase tracking-widest text-xs">Neural UI Designer</span>
-                <span class="text-blue-400 text-[10px] font-black underline">APPLY →</span>
-            </div>
+            <button class="apply-btn">Transmit CV</button>
         </div>
-    </section>
+
+        <div class="job-card">
+            <div class="job-info">
+                <h3>Cyber Security Lead</h3>
+                <p>Hybrid • Contract • Node Protection</p>
+            </div>
+            <button class="apply-btn">Transmit CV</button>
+        </div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        async function loadCareers() {
+            try {
+                const snapshot = await db.collection('careers_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    if(data.title) document.getElementById('page-title').innerText = data.title;
+                    if(data.description) document.getElementById('page-desc').innerText = data.description;
+                    if(data.imageUrl) document.getElementById('page-img').src = data.imageUrl;
+                }
+            } catch (e) { console.log("Sync Error: Using backup job nodes."); }
+        }
+        loadCareers();
+    </script>
 </body>
 </html>
