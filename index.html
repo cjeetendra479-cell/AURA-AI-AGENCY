@@ -3,107 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POWER TECH HUB // GLOBAL</title>
+    <title>AURA.AI // THE REVOLUTION</title>
+    
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
     <style>
-        :root { --neon: #00f2ff; --glow: rgba(0, 242, 255, 0.5); --bg: #05070a; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        
-        /* THEME: NO COPY TECH */
-        .bg-layer { position: fixed; top: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #101a26 0%, #05070a 100%); z-index: -1; }
-        
-        .header { margin-top: 40px; text-align: center; }
-        .header h1 { font-size: 2.5rem; letter-spacing: 5px; color: var(--neon); text-shadow: 0 0 20px var(--glow); margin: 10px; }
-        
-        /* 13 BUTTONS GRID - ALL ON SCREEN */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 15px;
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-            justify-content: center;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;1,800&display=swap');
+
+        :root {
+            --bg: #050509;
+            --primary: #2563eb;
+            --text-sub: #94a3b8;
+            --card-bg: #0b0b14;
+            --border: rgba(255,255,255,0.08);
         }
 
-        .tech-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 8px;
-            transition: 0.3s;
-            backdrop-filter: blur(5px);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0; background-color: var(--bg); color: white; overflow-x: hidden;
         }
 
-        .tech-btn:hover { background: var(--neon); color: black; box-shadow: 0 0 30px var(--neon); transform: translateY(-5px); }
-
-        /* UNIQUE IMAGES SECTION (4 PICS) */
-        .image-cluster {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            width: 90%;
-            max-width: 600px;
-            margin-bottom: 50px;
+        /* STICKY HEADER (Backup now) */
+        .sticky-header {
+            position: fixed; top: 0; width: 100%; background: rgba(11, 11, 20, 0.9);
+            backdrop-filter: blur(10px); padding: 10px 20px; display: flex;
+            justify-content: center; border-bottom: 1px solid var(--border); z-index: 1000;
         }
-        .img-card { width: 100%; height: 150px; border-radius: 12px; object-fit: cover; border: 2px solid #1a222d; pointer-events: none; user-select: none; }
 
-        @media (max-width: 600px) { .grid-container { grid-template-columns: repeat(3, 1fr); } }
+        .backup-btn {
+            background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border);
+            padding: 10px 25px; border-radius: 50px; font-size: 14px; font-weight: 600;
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+
+        /* HERO SECTION - BACKEND DRIVEN */
+        .hero { padding: 180px 20px 80px; text-align: center; }
+        .tag { color: var(--primary); text-transform: uppercase; font-size: 11px; font-weight: 800; letter-spacing: 3px; margin-bottom: 15px; }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; font-style: italic;
+            text-transform: uppercase; line-height: 0.9; margin: 0 auto 30px; letter-spacing: -2px;
+        }
+
+        .hero h1 span.blue { color: var(--primary); }
+
+        .hero p { color: var(--text-sub); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; }
+
+        .btn-group { display: flex; gap: 15px; justify-content: center; }
+        .btn { padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+        .btn-blue { background: var(--primary); color: white; }
+        .btn-outline { border: 1px solid var(--border); color: white; background: rgba(255,255,255,0.02); }
+
+        /* CARDS */
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto 80px; padding: 0 20px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 12px; }
+        .card h3 { text-transform: uppercase; margin: 0 0 10px; font-size: 1.2rem; }
+        .card p { color: var(--text-sub); font-size: 0.9rem; }
+        .card a { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; }
+
+        /* FOOTER */
+        footer { border-top: 1px solid var(--border); padding: 60px 20px; color: var(--text-sub); font-size: 12px; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 1100px; margin: 0 auto; gap: 40px; }
+        .f-col h4 { color: white; text-transform: uppercase; margin-bottom: 20px; font-size: 10px; letter-spacing: 2px; }
+        .f-col a { color: var(--text-sub); text-decoration: none; display: block; margin-bottom: 10px; }
+        .admin-link { color: var(--primary) !important; font-weight: 800; }
     </style>
 </head>
 <body>
-    <div class="bg-layer"></div>
-    
-    <div class="header">
-        <h1 id="site-title">POWER TECH HUB</h1>
-        <p id="site-desc">Next-Gen Technology Reselling Node</p>
+
+    <div class="sticky-header">
+        <a href="#" class="backup-btn"><span>☁️</span> Back up now</a>
     </div>
 
-    <!-- ALL 13 BUTTONS IN CENTER -->
-    <div class="grid-container">
-        <a href="index.html" class="tech-btn" style="border-color: var(--neon);">Home</a>
-        <a href="about.html" class="tech-btn">About</a>
-        <a href="services.html" class="tech-btn">Services</a>
-        <a href="portfolio.html" class="tech-btn">Portfolio</a>
-        <a href="pricing.html" class="tech-btn">Pricing</a>
-        <a href="team.html" class="tech-btn">Team</a>
-        <a href="labs.html" class="tech-btn">Labs</a>
-        <a href="faq.html" class="tech-btn">FAQ</a>
-        <a href="blog.html" class="tech-btn">Blog</a>
-        <a href="contact.html" class="tech-btn">Contact</a>
-        <a href="admin.html" class="tech-btn" style="background: #ff0055; border: none;">Admin</a>
-        <a href="neural.html" class="tech-btn">Neural</a>
-        <a href="privacy.html" class="tech-btn">Privacy</a>
+    <header class="hero">
+        <div class="tag">Intelligence Redefined</div>
+        <h1 id="main-title">THE<br><span class="blue">REVOLUTION.</span></h1>
+        <p id="main-desc">Automate your workflow with our proprietary deep-learning models. Faster than thought, more precise than humanly possible.</p>
+        <div class="btn-group">
+            <a href="services.html" class="btn btn-blue">Explore Services</a>
+            <a href="portfolio.html" class="btn btn-outline">View Work</a>
+        </div>
+    </header>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Neural-Nets</h3>
+            <p>Deep dive into our core architectural layers and synaptic processing.</p>
+            <a href="neural.html">Learn More</a>
+        </div>
+        <div class="card">
+            <h3>Research Labs</h3>
+            <p>See what we are building next in our experimental AI playground.</p>
+            <a href="labs.html">Visit Labs</a>
+        </div>
+        <div class="card">
+            <h3>Pricing</h3>
+            <p>Scalable plans for developers and large-scale global enterprises.</p>
+            <a href="pricing.html">Check Plans</a>
+        </div>
     </div>
 
-    <!-- 4 UNIQUE AI TECH PICS -->
-    <div class="image-cluster">
-        <img class="img-card" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400" alt="T1">
-        <img class="img-card" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400" alt="T2">
-        <img class="img-card" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400" alt="T3">
-        <img class="img-card" src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=400" alt="T4">
-    </div>
+    <footer>
+        <div class="f-grid">
+            <div class="f-col"><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+            <div class="f-col"><h4>Platform</h4><a href="services.html">Services</a><a href="labs.html">Labs</a></div>
+            <div class="f-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+            <div class="f-col"><h4>System</h4><a href="admin.html" class="admin-link">ADMIN PANEL</a></div>
+            <div class="f-col"><h4>Newsletter</h4><input type="text" placeholder="Email" style="width:100%; background:#000; border:1px solid #222; padding:8px; color:white;"></div>
+        </div>
+    </footer>
 
     <script>
+        // BACKEND CONFIG
         const firebaseConfig = { apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U", projectId: "aura-ai-agency" };
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        async function sync() {
-            const snap = await db.collection('index_data').doc('master_data').get();
-            if (snap.exists) {
-                document.getElementById('site-title').innerText = snap.data().title;
-                document.getElementById('site-desc').innerText = snap.data().description;
-            }
+        async function syncData() {
+            try {
+                const doc = await db.collection('index_data').doc('master_data').get();
+                if (doc.exists) {
+                    const data = doc.data();
+                    if(data.title) document.getElementById('main-title').innerHTML = data.title;
+                    if(data.description) document.getElementById('main-desc').innerText = data.description;
+                }
+            } catch (e) { console.log("Backend Offline"); }
         }
-        window.onload = sync;
+        window.onload = syncData;
     </script>
 </body>
 </html>
