@@ -3,93 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA Pricing | Select Your Intelligence Plan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Pricing | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <style>
-        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .price-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
-        .price-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
-        .featured-card { border: 2px solid #3b82f6; position: relative; overflow: hidden; }
-        .featured-tag { background: #3b82f6; color: white; transform: rotate(45deg); position: absolute; top: 20px; right: -40px; width: 150px; text-align: center; font-size: 10px; font-weight: bold; }
+        :root { --neon: #00f2ff; --bg: #050505; --card: #111; --accent: #7000ff; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding-top: 100px; }
+        
+        /* Fixed Navbar */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; backdrop-filter: blur(10px); }
+        .logo { font-weight: 800; color: var(--neon); letter-spacing: 2px; font-size: 1.5rem; text-shadow: 0 0 10px var(--neon); }
+        .nav-links { list-style: none; display: flex; gap: 20px; margin: 0; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; margin-bottom: 50px; }
+        h1 { font-size: 3rem; color: var(--neon); text-transform: uppercase; letter-spacing: 3px; }
+        p.sub { color: #666; margin-top: 10px; }
+
+        /* Pricing Grid */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .price-card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 40px; text-align: center; transition: 0.4s; position: relative; }
+        .price-card.popular { border-color: var(--neon); transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); }
+        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--neon); color: #000; padding: 5px 20px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+
+        .price-value { font-size: 3.5rem; font-weight: 800; margin: 20px 0; color: #fff; }
+        .price-value span { font-size: 1rem; color: #666; }
+        
+        .features-list { list-style: none; padding: 0; margin: 30px 0; text-align: left; }
+        .features-list li { margin-bottom: 15px; color: #bbb; font-size: 0.95rem; }
+        .features-list li::before { content: "✓"; color: var(--neon); margin-right: 10px; font-weight: bold; }
+
+        .buy-btn { display: block; width: 100%; padding: 15px; background: transparent; border: 1px solid var(--neon); color: var(--neon); text-decoration: none; border-radius: 10px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        .price-card.popular .buy-btn { background: var(--neon); color: #000; }
+        .buy-btn:hover { background: var(--neon); color: #000; box-shadow: 0 0 20px var(--neon); }
+
+        @media (max-width: 768px) { .price-card.popular { transform: scale(1); margin: 20px 0; } }
     </style>
 </head>
-<body class="bg-slate-950">
+<body>
 
-    <!-- Navbar (Consistency is Key) -->
-    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500"><a href="index.html">AURA.AI</a></div>
-        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400">
-            <a href="index.html" class="hover:text-blue-400 transition">HOME</a>
-            <a href="labs.html" class="hover:text-blue-400 transition">LABS</a>
-            <a href="neural-nets.html" class="hover:text-blue-400 transition">NEURAL-NETS</a>
-            <a href="pricing.html" class="text-blue-400">PRICING</a>
-            <a href="about.html" class="hover:text-blue-400 transition">ABOUT</a>
-            <a href="contact.html" class="hover:text-blue-400 transition">CONTACT</a>
-        </div>
-        <button class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-500 transition">Launch App</button>
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="pricing.html" style="color: var(--neon);">Pricing</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- Header Section -->
-    <section class="max-w-7xl mx-auto py-20 px-6 text-center">
-        <span class="text-blue-500 font-bold tracking-[0.3em] text-[10px] uppercase mb-4 block">Scalable Intelligence</span>
-        <h1 class="text-5xl md:text-7xl font-black mb-6 italic tracking-tighter uppercase">Pick Your <span class="text-blue-500">Power.</span></h1>
-        <p class="text-slate-400 max-w-xl mx-auto text-sm">Flexible plans designed for solo developers and global enterprises.</p>
-    </section>
-
-    <!-- Pricing Grid -->
-    <section class="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Plan 1: Starter -->
-        <div class="price-card p-10 rounded-[2.5rem]">
-            <h3 class="text-xs font-black tracking-widest uppercase mb-4 text-slate-500">Starter</h3>
-            <div class="text-5xl font-black mb-6">$0<span class="text-sm text-slate-600 font-normal">/mo</span></div>
-            <ul class="space-y-4 mb-10 text-sm text-slate-400 font-medium">
-                <li>✓ 1,000 API Requests</li>
-                <li>✓ Standard Neural Models</li>
-                <li>✓ Community Support</li>
-                <li class="opacity-30">✗ Custom Fine-tuning</li>
-            </ul>
-            <button class="w-full border border-slate-700 py-4 rounded-2xl font-bold hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">Get Started</button>
+    <div class="container">
+        <div class="header">
+            <h1>Service Tiers</h1>
+            <p class="sub">Flexible investment for high-performance neural solutions.</p>
         </div>
 
-        <!-- Plan 2: Pro (Featured) -->
-        <div class="price-card featured-card p-10 rounded-[2.5rem] bg-slate-900/40">
-            <div class="featured-tag uppercase">Most Popular</div>
-            <h3 class="text-xs font-black tracking-widest uppercase mb-4 text-blue-400">Pro Developer</h3>
-            <div class="text-5xl font-black mb-6">$49<span class="text-sm text-slate-600 font-normal">/mo</span></div>
-            <ul class="space-y-4 mb-10 text-sm text-slate-200 font-medium">
-                <li>✓ Unlimited API Requests</li>
-                <li>✓ Advanced Vision Models</li>
-                <li>✓ Priority Email Support</li>
-                <li>✓ Commercial Usage</li>
-            </ul>
-            <button class="w-full bg-blue-600 py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-900/50 uppercase text-xs tracking-widest">Upgrade Now</button>
+        <div class="pricing-grid">
+            <!-- Starter Plan -->
+            <div class="price-card">
+                <h3 id="plan1-name">STARTER</h3>
+                <div class="price-value">₹<span id="plan1-price">4,999</span></div>
+                <ul class="features-list">
+                    <li>Single Landing Page</li>
+                    <li>Basic AI Integration</li>
+                    <li>Mobile Responsive</li>
+                    <li>7-Day Delivery</li>
+                </ul>
+                <a href="contact.html" class="buy-btn">Select Node</a>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="price-card popular">
+                <div class="popular-badge">Top Seller</div>
+                <h3 id="plan2-name">PROFESSIONAL</h3>
+                <div class="price-value">₹<span id="plan2-price">9,999</span></div>
+                <ul class="features-list">
+                    <li>Up to 5 Pages</li>
+                    <li>Advanced Neural UI</li>
+                    <li>Firebase Integration</li>
+                    <li>SEO Optimization</li>
+                    <li>24/7 Priority Support</li>
+                </ul>
+                <a href="contact.html" class="buy-btn">Scale Up</a>
+            </div>
+
+            <!-- Custom Plan -->
+            <div class="price-card">
+                <h3 id="plan3-name">CUSTOM</h3>
+                <div class="price-value">Sync<span>/mo</span></div>
+                <ul class="features-list">
+                    <li>Full Multi-page System</li>
+                    <li>Custom AI Modules</li>
+                    <li>Complete Automation</li>
+                    <li>Lifetime Updates</li>
+                </ul>
+                <a href="contact.html" class="buy-btn">Contact Sales</a>
+            </div>
         </div>
+    </div>
 
-        <!-- Plan 3: Enterprise -->
-        <div class="price-card p-10 rounded-[2.5rem]">
-            <h3 class="text-xs font-black tracking-widest uppercase mb-4 text-slate-500">Enterprise</h3>
-            <div class="text-5xl font-black mb-6">$199<span class="text-sm text-slate-600 font-normal">/mo</span></div>
-            <ul class="space-y-4 mb-10 text-sm text-slate-400 font-medium">
-                <li>✓ Dedicated GPU Cluster</li>
-                <li>✓ Custom Model Training</li>
-                <li>✓ 24/7 Phone Support</li>
-                <li>✓ SLA Guarantees</li>
-            </ul>
-            <button class="w-full border border-slate-700 py-4 rounded-2xl font-bold hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">Contact Sales</button>
-        </div>
+    <script>
+        // Aura AI Agency Firebase Config
+        const firebaseConfig = {
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
+        };
 
-    </section>
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-    <!-- FAQ Small Section -->
-    <section class="max-w-2xl mx-auto py-24 px-6 text-center">
-        <p class="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-4">No hidden fees. Cancel anytime.</p>
-        <p class="text-slate-400 text-sm italic italic">"Aura-AI has transformed how we handle our backend automation. The Pro plan is a steal." – TechCrunch</p>
-    </section>
+        async function syncPricing() {
+            try {
+                const snapshot = await db.collection('pricing_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    
+                    // UI update for plans
+                    if(data.starterPrice) document.getElementById('plan1-price').innerText = data.starterPrice;
+                    if(data.proPrice) document.getElementById('plan2-price').innerText = data.proPrice;
+                    if(data.starterName) document.getElementById('plan1-name').innerText = data.starterName;
+                    if(data.proName) document.getElementById('plan2-name').innerText = data.proName;
+                }
+            } catch (err) {
+                console.log("Pricing using local defaults.");
+            }
+        }
 
-    <footer class="text-center py-20 text-slate-700 text-[10px] font-bold tracking-[0.3em] uppercase border-t border-slate-900">
-        © 2026 AURA PRICING SYSTEM // TRANSPARENT FUTURE.
-    </footer>
-
+        window.onload = syncPricing;
+    </script>
 </body>
 </html>
+
