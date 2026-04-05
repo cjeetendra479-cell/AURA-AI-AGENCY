@@ -3,90 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA Services | Neural Solutions</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Services | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <style>
-        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .service-card { background: linear-gradient(145deg, #0f172a, #020617); border: 1px solid rgba(59, 130, 246, 0.1); transition: all 0.4s ease; }
-        .service-card:hover { border-color: #3b82f6; transform: scale(1.02); box-shadow: 0 0 40px rgba(59, 130, 246, 0.1); }
-        .icon-box { background: rgba(59, 130, 246, 0.1); color: #3b82f6; width: 50px; height: 50px; display: flex; items-center; justify-content: center; border-radius: 12px; margin-bottom: 20px; }
+        :root { --neon: #00f2ff; --bg: #050505; --card: #111; --accent: #7000ff; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding-top: 100px; }
+        
+        /* Fixed Navbar */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); border-bottom: 2px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; backdrop-filter: blur(10px); }
+        .logo { font-weight: 800; color: var(--neon); letter-spacing: 2px; font-size: 1.5rem; text-shadow: 0 0 10px var(--neon); }
+        .nav-links { list-style: none; display: flex; gap: 20px; margin: 0; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 3.5rem; color: var(--neon); text-transform: uppercase; letter-spacing: 4px; margin: 0; }
+        .header p { color: #666; font-size: 1.1rem; margin-top: 15px; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .service-card { background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 40px; transition: 0.4s ease; position: relative; overflow: hidden; }
+        .service-card:hover { border-color: var(--neon); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 242, 255, 0.1); }
+        
+        /* Icon Simulation */
+        .icon-box { width: 50px; height: 50px; background: rgba(0, 242, 255, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; color: var(--neon); font-size: 1.5rem; border: 1px solid rgba(0, 242, 255, 0.3); }
+
+        .service-card h3 { font-size: 1.6rem; color: #fff; margin-bottom: 15px; letter-spacing: 1px; }
+        .service-card p { color: #888; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+        
+        .learn-more { color: var(--neon); text-decoration: none; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .learn-more:hover { letter-spacing: 2px; text-shadow: 0 0 10px var(--neon); }
+
+        /* Dynamic Badge */
+        .sync-tag { position: absolute; top: 20px; right: 20px; font-size: 9px; color: #333; text-transform: uppercase; letter-spacing: 2px; }
+
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } }
     </style>
 </head>
-<body class="bg-slate-950">
+<body>
 
-    <!-- Navbar -->
-    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500"><a href="index.html">AURA.AI</a></div>
-        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400 text-slate-300">
-            <a href="index.html" class="hover:text-blue-400 transition">HOME</a>
-            <a href="services.html" class="text-blue-400">SERVICES</a>
-            <a href="portfolio.html" class="hover:text-blue-400 transition">PORTFOLIO</a>
-            <a href="pricing.html" class="hover:text-blue-400 transition">PRICING</a>
-            <a href="about.html" class="hover:text-blue-400 transition">ABOUT</a>
-            <a href="contact.html" class="hover:text-blue-400 transition">CONTACT</a>
-        </div>
-        <button class="bg-blue-600 text-white px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-700 transition">Get Quote</button>
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- Header -->
-    <section class="max-w-7xl mx-auto py-20 px-6">
-        <div class="max-w-3xl">
-            <span class="text-blue-500 font-black text-[10px] tracking-[0.4em] uppercase mb-4 block underline">Capabilities Matrix</span>
-            <h1 class="text-5xl md:text-7xl font-black italic tracking-tighter uppercase mb-6 leading-none">CORE <br><span class="text-blue-600">OFFERINGS.</span></h1>
-            <p class="text-slate-400 text-sm font-medium tracking-wide leading-relaxed">We provide end-to-end AI integration, from custom neural network design to large-scale data automation.</p>
-        </div>
-    </section>
-
-    <!-- Services Grid -->
-    <section class="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Service 1 -->
-        <div class="service-card p-10 rounded-[2.5rem]">
-            <div class="icon-box">01</div>
-            <h3 class="text-2xl font-black mb-4 italic uppercase">Custom LLM Training</h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6">Train a private language model on your company’s internal data for maximum security and relevance.</p>
-            <ul class="text-[10px] font-bold text-blue-400 space-y-2 uppercase tracking-widest">
-                <li>• Data Sanitization</li>
-                <li>• Fine-Tuning</li>
-                <li>• API Deployment</li>
-            </ul>
+    <div class="container">
+        <div class="header">
+            <h1 id="service-main-title">OUR CAPABILITIES</h1>
+            <p>Deploying cutting-edge AI ecosystems and high-conversion digital architectures.</p>
         </div>
 
-        <!-- Service 2 -->
-        <div class="service-card p-10 rounded-[2.5rem]">
-            <div class="icon-box">02</div>
-            <h3 class="text-2xl font-black mb-4 italic uppercase">Computer Vision</h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6">Implement real-time object detection and visual analysis for security, retail, or industrial automation.</p>
-            <ul class="text-[10px] font-bold text-blue-400 space-y-2 uppercase tracking-widest">
-                <li>• Motion Tracking</li>
-                <li>• Face Recognition</li>
-                <li>• Quality Control</li>
-            </ul>
+        <div class="services-grid" id="services-container">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <span class="sync-tag">Node 01</span>
+                <div class="icon-box">⚡</div>
+                <h3>AI Landing Pages</h3>
+                <p>High-speed, conversion-optimized landing pages built with neural design principles for maximum reseller profit.</p>
+                <a href="contact.html" class="learn-more">Initialize →</a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <span class="sync-tag">Node 02</span>
+                <div class="icon-box">🌐</div>
+                <h3>Full-Stack Web</h3>
+                <p>Complete multi-page systems integrated with Firebase and real-time database nodes for seamless data flow.</p>
+                <a href="contact.html" class="learn-more">Initialize →</a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <span class="sync-tag">Node 03</span>
+                <div class="icon-box">🤖</div>
+                <h3>AI Automation</h3>
+                <p>Automating repetitive workflows using custom AI modules and intelligent algorithm deployment.</p>
+                <a href="contact.html" class="learn-more">Initialize →</a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <span class="sync-tag">Node 04</span>
+                <div class="icon-box">📱</div>
+                <h3>Neural UI/UX</h3>
+                <p>Futuristic user interfaces that adapt to user behavior, providing a unique cyberpunk aesthetic and feel.</p>
+                <a href="contact.html" class="learn-more">Initialize →</a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <span class="sync-tag">Node 05</span>
+                <div class="icon-box">☁️</div>
+                <h3>Cloud Integration</h3>
+                <p>Deploying your projects on secure cloud infrastructures like Firebase, Netlify, and GitHub Pages.</p>
+                <a href="contact.html" class="learn-more">Initialize →</a>
+            </div>
+
+            <!-- Service 6 (Dynamic Firebase Node) -->
+            <div class="service-card" id="dynamic-service">
+                <span class="sync-tag" id="db-status">Syncing...</span>
+                <div class="icon-box">✨</div>
+                <h3 id="db-service-name">Loading Service...</h3>
+                <p id="db-service-desc">Fetching latest service metadata from AURA AI central database...</p>
+                <a href="contact.html" class="learn-more">Syncing Data...</a>
+            </div>
         </div>
+    </div>
 
-        <!-- Service 3 -->
-        <div class="service-card p-10 rounded-[2.5rem]">
-            <div class="icon-box">03</div>
-            <h3 class="text-2xl font-black mb-4 italic uppercase">Workflow Automation</h3>
-            <p class="text-slate-500 text-sm leading-relaxed mb-6">Automate repetitive tasks with AI agents that can read emails, process invoices, and manage schedules.</p>
-            <ul class="text-[10px] font-bold text-blue-400 space-y-2 uppercase tracking-widest">
-                <li>• Zapier Integration</li>
-                <li>• Custom AI Agents</li>
-                <li>• ERP Connectivity</li>
-            </ul>
-        </div>
+    <script>
+        // Aura AI Agency Firebase Config
+        const firebaseConfig = {
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
+        };
 
-    </section>
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-    <!-- Call to Action -->
-    <section class="max-w-7xl mx-auto py-24 px-6 text-center border-t border-slate-900 mt-20">
-        <h2 class="text-3xl font-black italic mb-8 uppercase tracking-tighter">Need a Custom Neural Solution?</h2>
-        <a href="contact.html" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-600 hover:text-white transition inline-block">Consult Our Engineers</a>
-    </section>
+        async function fetchServices() {
+            try {
+                // 'services_data' collection se 6th service ka data uthana
+                const snapshot = await db.collection('services_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    
+                    // Update dynamic card
+                    if(data.name) document.getElementById('db-service-name').innerText = data.name;
+                    if(data.desc) document.getElementById('db-service-desc').innerText = data.desc;
+                    document.getElementById('db-status').innerText = "Live Node";
+                    
+                    // Update Main Title if needed
+                    if(data.mainTitle) document.getElementById('service-main-title').innerText = data.mainTitle;
+                }
+            } catch (err) {
+                console.log("Using default services.");
+            }
+        }
 
-    <footer class="text-center py-20 text-slate-700 text-[10px] font-bold tracking-[0.3em] uppercase">
-        © 2026 AURA SERVICES // EFFICIENCY DEFINED.
-    </footer>
-
+        window.onload = fetchServices;
+    </script>
 </body>
 </html>
