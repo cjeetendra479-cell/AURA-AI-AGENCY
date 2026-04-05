@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA-AI | Infinite Ecosystem</title>
+    <title>AURA AI | Unified Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
@@ -11,19 +11,19 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #000; color: white; margin:0; overflow-x: hidden; }
         
-        /* Sticky Header - Ye kabhi nahi hilega */
-        .master-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(0,0,0,0.9); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+        /* Sticky Header - Hamesha upar rahega */
+        .master-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* Navigation Buttons */
-        .nav-btn { color: #555; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 10px 15px; cursor: pointer; transition: 0.3s; white-space: nowrap; border-radius: 99px; }
+        /* Nav Buttons */
+        .nav-btn { color: #666; font-size: 9px; font-weight: 800; text-transform: uppercase; padding: 10px 15px; cursor: pointer; transition: 0.3s; white-space: nowrap; border-radius: 99px; }
         .nav-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
-        .nav-btn.active { color: #fff; background: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .nav-btn.active { color: #fff; background: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
         
-        /* Content Sections */
-        .tab-section { display: none; padding-top: 180px; min-height: 100vh; animation: fadeInUp 0.4s ease forwards; }
+        /* Sections Logic */
+        .tab-section { display: none; padding-top: 180px; min-height: 100vh; animation: fadeIn 0.4s ease; }
         .tab-section.active { display: block; }
         
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
@@ -32,7 +32,6 @@
     <header class="master-header py-6">
         <div class="max-w-[1400px] mx-auto px-6 flex flex-col items-center gap-6">
             <h1 class="text-2xl font-black italic tracking-tighter text-blue-500 uppercase">AURA-AI</h1>
-            
             <div class="flex gap-2 overflow-x-auto no-scrollbar w-full justify-start md:justify-center px-4">
                 <div class="nav-btn active" onclick="showTab(event, 'home')">Home</div>
                 <div class="nav-btn" onclick="showTab(event, 'about')">About</div>
@@ -47,70 +46,71 @@
                 <div class="nav-btn" onclick="showTab(event, 'careers')">Careers</div>
                 <div class="nav-btn" onclick="showTab(event, 'contact')">Contact</div>
                 <div class="nav-btn" onclick="showTab(event, 'privacy')">Privacy</div>
-                <a href="admin.html" class="bg-white text-black px-5 py-2 rounded-full text-[10px] font-black uppercase ml-4">Admin</a>
+                <a href="admin.html" class="bg-white text-black px-4 py-2 rounded-full text-[10px] font-black uppercase ml-4">Admin</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6 pb-20">
         
         <section id="home" class="tab-section active">
-            <div class="text-center mb-20">
-                <h2 class="text-6xl md:text-9xl font-black italic mb-6">GLOBAL <span class="text-blue-600">NODE.</span></h2>
-                <div id="project-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-16">
-                    <p class="col-span-full text-center text-zinc-800 animate-pulse uppercase text-xs tracking-widest">Syncing with Aura Cloud...</p>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-6xl md:text-8xl font-black italic mb-4 uppercase">Global <span class="text-blue-500">Node.</span></h2>
+                <p class="text-zinc-600 uppercase tracking-[0.5em] text-[10px] font-bold">Premium Cloud Infrastructure</p>
             </div>
+            <div id="project-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                </div>
         </section>
 
         <section id="about" class="tab-section">
-            <h2 class="text-5xl font-black italic text-blue-500 mb-8 uppercase">Our Core</h2>
-            <p class="text-zinc-400 text-2xl leading-relaxed max-w-3xl border-l-4 border-blue-600 pl-8">
-                Aura-AI is a high-performance technology agency specializing in scalable digital architectures and AI-driven automation.
-            </p>
+            <h2 class="text-5xl font-black italic text-blue-500 mb-6 uppercase">The Core</h2>
+            <p class="text-zinc-400 text-2xl leading-relaxed max-w-3xl">Aura-AI is a next-generation technology agency. We specialize in building autonomous digital systems and high-end web architectures.</p>
         </section>
 
         <section id="services" class="tab-section">
-            <h2 class="text-5xl font-black italic text-blue-500 mb-12 uppercase">Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5">
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Neural Integration</h4>
-                    <p class="text-zinc-500">Deploying custom LLMs and automated workflows for enterprise data.</p>
+            <h2 class="text-5xl font-black italic text-blue-500 mb-10 uppercase">Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-10 bg-zinc-900/50 rounded-[3rem] border border-white/5">
+                    <h4 class="text-2xl font-bold uppercase mb-4">Web Engineering</h4>
+                    <p class="text-zinc-500">Fast, secure, and scalable cloud-native platforms.</p>
                 </div>
-                <div class="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5">
-                    <h4 class="text-2xl font-bold mb-4 uppercase">Web Systems</h4>
-                    <p class="text-zinc-500">Ultra-fast, cloud-native web platforms built for massive scale.</p>
+                <div class="p-10 bg-zinc-900/50 rounded-[3rem] border border-white/5">
+                    <h4 class="text-2xl font-bold uppercase mb-4">Neural Systems</h4>
+                    <p class="text-zinc-500">Integrating custom AI models into existing workflows.</p>
                 </div>
             </div>
         </section>
 
         <section id="labs" class="tab-section">
-            <h2 class="text-5xl font-black italic text-zinc-600 mb-8 uppercase">Aura Labs</h2>
-            <div class="p-12 border-2 border-dashed border-zinc-900 rounded-[4rem] text-center">
-                <p class="text-zinc-500 italic">"Researching the next boundary of human-AI interaction."</p>
+            <h2 class="text-5xl font-black italic text-zinc-700 mb-8 uppercase">Aura Labs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-8 border border-dashed border-zinc-800 rounded-3xl">
+                    <span class="text-blue-500 text-[10px] font-bold uppercase tracking-widest">Prototype v1.0</span>
+                    <h4 class="text-xl font-bold mt-4">Predictive UI</h4>
+                </div>
             </div>
         </section>
 
-        </main>
+        <section id="neural" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Neural Nets</h2></section>
+        <section id="team" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Our Team</h2></section>
+        <section id="blog" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Insights</h2></section>
+        <section id="faq" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Common Questions</h2></section>
+        <section id="pricing" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Pricing Tiers</h2></section>
+        <section id="careers" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Join Us</h2></section>
+        <section id="contact" class="tab-section text-center"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Let's Talk</h2><p class="text-blue-500 mt-4 text-2xl">cjeetendra479@gmail.com</p></section>
+        <section id="privacy" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Data Privacy</h2></section>
+        <section id="portfolio" class="tab-section"><h2 class="text-5xl font-black italic text-zinc-700 uppercase">Global Portfolio</h2><div id="port-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10"></div></section>
+
+    </main>
 
     <script>
-        // TRIPLE-CHECKED SWITCHER LOGIC
+        // TAB SWITCHER
         function showTab(evt, name) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.tab-section');
-            sections.forEach(s => s.classList.remove('active'));
-            
-            // Deactivate all buttons
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-            
-            // Show target section & activate button
-            const target = document.getElementById(name);
-            if(target) {
-                target.classList.add('active');
-                evt.currentTarget.classList.add('active');
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+            evt.currentTarget.classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         // FIREBASE SYNC
@@ -122,28 +122,32 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        async function loadFeed() {
+        async function loadData() {
             const feed = document.getElementById('project-feed');
+            const portFeed = document.getElementById('port-feed');
             try {
                 db.collection("projects").onSnapshot((snap) => {
-                    if(snap.empty) { feed.innerHTML = "<p class='col-span-full text-center text-zinc-800 py-20'>No Active Nodes.</p>"; return; }
+                    if(snap.empty) { feed.innerHTML = "<p class='col-span-full text-center py-20 text-zinc-800'>Project node is empty.</p>"; return; }
                     let html = "";
                     snap.forEach(doc => {
                         const d = doc.data();
-                        const img = d.imageUrl || 'https://via.placeholder.com/800x450/111/333?text=Aura+Project';
+                        // PIC FIX: Agar pic nahi hai toh ye tech image dikhayega
+                        const img = d.imageUrl || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800';
                         html += `
-                            <div class="bg-zinc-900/40 border border-white/5 p-4 rounded-[2.5rem] group hover:border-blue-500 transition-all">
-                                <img src="${img}" class="w-full h-56 object-cover rounded-[1.8rem] mb-4 grayscale group-hover:grayscale-0 transition-all">
-                                <h4 class="text-xl font-black uppercase italic text-white px-2">${d.title}</h4>
-                                <p class="text-zinc-500 text-[10px] px-2 font-bold uppercase tracking-widest mt-2">${d.description || 'Verified'}</p>
+                            <div class="bg-zinc-900/50 border border-white/5 p-4 rounded-[2.5rem] group hover:border-blue-600 transition-all">
+                                <img src="${img}" class="w-full h-56 object-cover rounded-[1.8rem] mb-4 shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700">
+                                <h4 class="text-xl font-bold uppercase italic px-2">${d.title}</h4>
+                                <p class="text-zinc-500 text-[10px] mt-2 px-2 uppercase tracking-widest">${d.description || 'Verified Deployment'}</p>
                             </div>
                         `;
                     });
                     feed.innerHTML = html;
+                    if(portFeed) portFeed.innerHTML = html;
                 });
             } catch(e) { console.error(e); }
         }
-        window.onload = loadFeed;
+        window.onload = loadData;
     </script>
 </body>
 </html>
+
