@@ -3,85 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact AURA | Connect with Intelligence</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Contact | AURA AI AGENCY</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <style>
-        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .input-glow:focus { border-color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); outline: none; }
-        .glass-box { background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        :root { --neon: #00f2ff; --bg: #0a0a0a; --card: #111; --whatsapp: #25D366; --gmail: #DB4437; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding-top: 100px; }
+        
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--neon); z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; }
+        .logo { font-weight: bold; color: var(--neon); letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+        .nav-links a { color: #888; text-decoration: none; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        .header-full { grid-column: 1 / -1; text-align: center; margin-bottom: 30px; }
+        #page-title { font-size: 3rem; color: var(--neon); margin: 0; text-transform: uppercase; }
+        #page-img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; margin-top: 20px; border: 1px solid #333; }
+
+        .direct-links { display: flex; flex-direction: column; gap: 20px; }
+        .connect-card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #222; text-align: center; }
+        .btn { display: inline-block; width: 80%; padding: 15px; margin: 10px 0; border-radius: 8px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer; }
+        
+        .btn-wa { background: var(--whatsapp); color: white; box-shadow: 0 0 15px rgba(37, 211, 102, 0.3); }
+        .btn-wa:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--whatsapp); }
+        
+        .btn-gm { background: var(--gmail); color: white; box-shadow: 0 0 15px rgba(219, 68, 55, 0.3); }
+        .btn-gm:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--gmail); }
+
+        .form-card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #222; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; background: #000; border: 1px solid #333; color: white; border-radius: 5px; box-sizing: border-box; }
+        .send-btn { background: var(--neon); color: black; border: none; width: 100%; padding: 15px; font-weight: bold; cursor: pointer; border-radius: 5px; text-transform: uppercase; }
+        
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } #page-title { font-size: 2rem; } }
     </style>
 </head>
-<body class="bg-slate-950">
+<body>
 
-    <!-- Navbar -->
-    <nav class="flex justify-between items-center p-8 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-tighter border-b-4 border-blue-500"><a href="index.html">AURA.AI</a></div>
-        <div class="hidden lg:flex space-x-6 text-[10px] font-bold tracking-[0.2em] text-slate-400">
-            <a href="index.html" class="hover:text-blue-400 transition">HOME</a>
-            <a href="labs.html" class="hover:text-blue-400 transition">LABS</a>
-            <a href="portfolio.html" class="hover:text-blue-400 transition">PORTFOLIO</a>
-            <a href="pricing.html" class="hover:text-blue-400 transition">PRICING</a>
-            <a href="about.html" class="hover:text-blue-400 transition">ABOUT</a>
-            <a href="contact.html" class="text-blue-400">CONTACT</a>
-        </div>
-        <button class="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-blue-500 transition">Portal Login</button>
+    <nav class="navbar">
+        <div class="logo">AURA AI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" style="color: var(--neon);">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
     </nav>
 
-    <!-- Header -->
-    <section class="max-w-7xl mx-auto py-16 px-6 text-center">
-        <h1 class="text-5xl md:text-8xl font-black mb-4 italic tracking-tighter uppercase">Initiate <span class="text-blue-500">Contact.</span></h1>
-        <p class="text-slate-500 max-w-xl mx-auto text-sm uppercase tracking-widest font-bold">Secure communication line for global partnerships.</p>
-    </section>
+    <div class="container">
+        <div class="header-full">
+            <h1 id="page-title">ESTABLISH UPLINK</h1>
+            <p id="page-desc" style="color: #666;">Secure line to the Chief Architect.</p>
+            <img id="page-img" src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=1200" alt="Connect">
+        </div>
 
-    <!-- Contact Grid -->
-    <section class="max-w-7xl mx-auto py-12 px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        
-        <!-- Left: Contact Info -->
-        <div class="space-y-12">
-            <div>
-                <h3 class="text-blue-500 font-black text-xs tracking-[0.4em] uppercase mb-4">Direct Lines</h3>
-                <p class="text-2xl font-bold italic mb-2">+91 8619436849</p>
-                <p class="text-slate-400 text-sm">Our neural support is available 24/7 for Enterprise clients.</p>
-            </div>
-            
-            <div>
-                <h3 class="text-blue-500 font-black text-xs tracking-[0.4em] uppercase mb-4">Global HQ</h3>
-                <p class="text-2xl font-bold italic mb-2">New Delhi, India</p>
-                <p class="text-slate-400 text-sm">Tech Hub South, Cyber City Phase II.</p>
-            </div>
-
-            <div class="p-8 border-l-4 border-blue-600 bg-blue-600/5 rounded-r-3xl">
-                <p class="text-sm italic text-slate-300 italic">"Response time is under 120 seconds for all high-priority neural inquiries."</p>
+        <div class="direct-links">
+            <div class="connect-card">
+                <h2 style="color: var(--neon);">Direct Channels</h2>
+                <p style="color: #888; margin-bottom: 30px;">Choose your communication protocol.</p>
+                
+                <!-- WhatsApp Link - Updated Number -->
+                <a href="https://wa.me/918619436849" target="_blank" class="btn btn-wa">Open WhatsApp Chat</a>
+                
+                <!-- Gmail Link - Updated Email -->
+                <a href="mailto:Cjeetendra479@gmail.com" class="btn btn-gm">Official Email Link</a>
             </div>
         </div>
 
-        <!-- Right: Contact Form -->
-        <div class="glass-box p-10 rounded-[2.5rem]">
-            <form action="https://formspree.io/f/mreogagd" method="POST" class="space-y-6">
-                <div>
-                    <label class="block text-[10px] font-black tracking-widest text-slate-500 uppercase mb-2">Identification</label>
-                    <input type="text" name="name" placeholder="Full Name / Agency" required class="w-full bg-slate-900/50 border border-slate-800 p-4 rounded-xl text-white input-glow transition">
-                </div>
-
-                <div>
-                    <label class="block text-[10px] font-black tracking-widest text-slate-500 uppercase mb-2">Secure Email</label>
-                    <input type="email" name="email" placeholder="email@agency.com" required class="w-full bg-slate-900/50 border border-slate-800 p-4 rounded-xl text-white input-glow transition">
-                </div>
-
-                <div>
-                    <label class="block text-[10px] font-black tracking-widest text-slate-500 uppercase mb-2">Neural Task Description</label>
-                    <textarea name="message" rows="4" placeholder="How can we assist your evolution?" required class="w-full bg-slate-900/50 border border-slate-800 p-4 rounded-xl text-white input-glow transition"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 py-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] hover:bg-blue-700 transition shadow-xl shadow-blue-900/20">Transmit Data</button>
-            </form>
+        <div class="form-card">
+            <h2 style="margin-top: 0;">Transmission Form</h2>
+            <input type="text" placeholder="Identity Name">
+            <input type="email" placeholder="Return Address (Email)">
+            <textarea rows="5" placeholder="Data Transmission Details..."></textarea>
+            <button class="send-btn">Send Signal</button>
         </div>
+    </div>
 
-    </section>
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyCBk6Nz1cd4A0x7wOnLG2-eNw2Y98-75-U",
+          authDomain: "aura-ai-agency.firebaseapp.com",
+          projectId: "aura-ai-agency",
+          storageBucket: "aura-ai-agency.appspot.com",
+          messagingSenderId: "859076065133",
+          appId: "1:859076065133:web:f6078dabf975bf01280c64",
+          measurementId: "G-0MRWWPVZTM"
+        };
 
-    <footer class="text-center py-20 text-slate-700 text-[10px] font-bold tracking-[0.3em] uppercase border-t border-slate-900 mt-20">
-        © 2026 AURA COMM-LINK // ENCRYPTED.
-    </footer>
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
+        async function syncContact() {
+            try {
+                const snapshot = await db.collection('contact_data').get();
+                if (!snapshot.empty) {
+                    const data = snapshot.docs[0].data();
+                    if(data.title) document.getElementById('page-title').innerText = data.title;
+                    if(data.description) document.getElementById('page-desc').innerText = data.description;
+                    if(data.imageUrl) document.getElementById('page-img').src = data.imageUrl;
+                }
+            } catch (e) { console.log("System stable in offline state."); }
+        }
+        syncContact();
+    </script>
 </body>
 </html>
