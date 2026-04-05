@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>POWER TECH ADMIN</title>
+    <title>AURA ADMIN PANEL</title>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <style>
-        body { background: #05070a; color: white; font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
-        .panel { background: #111; padding: 30px; border-radius: 15px; border: 1px solid #00f2ff; width: 400px; }
-        input, textarea { width: 100%; margin: 10px 0; padding: 10px; background: #000; border: 1px solid #333; color: white; border-radius: 5px; }
-        button { width: 100%; padding: 15px; background: #00f2ff; color: black; font-weight: bold; border: none; cursor: pointer; border-radius: 5px; }
+        body { background: #050509; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 50px; }
+        .panel { background: #0b0b14; padding: 30px; border-radius: 12px; border: 1px solid #2563eb; width: 100%; max-width: 450px; }
+        h2 { color: #2563eb; margin-bottom: 20px; }
+        label { display: block; margin: 15px 0 5px; font-size: 12px; color: #94a3b8; }
+        input, textarea { width: 100%; padding: 12px; background: #000; border: 1px solid #222; color: white; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #2563eb; color: white; border: none; font-weight: bold; margin-top: 25px; cursor: pointer; border-radius: 6px; }
     </style>
 </head>
 <body>
     <div class="panel">
-        <h2>POWER TECH CONTROL</h2>
-        <input type="text" id="t" placeholder="New Website Title">
-        <textarea id="d" rows="5" placeholder="New Description"></textarea>
-        <button onclick="save()">UPDATE WEBSITE LIVE</button>
-        <p id="msg" style="color: lime;"></p>
+        <h2>AURA CONTROL CENTER</h2>
+        <label>Heading (Use &lt;br&gt; for line break)</label>
+        <input type="text" id="t" placeholder='Example: THE <br><span class="blue">REVOLUTION.</span>'>
+        
+        <label>Sub-Description</label>
+        <textarea id="d" rows="4" placeholder="Enter website description..."></textarea>
+        
+        <button onclick="update()">PUBLISH LIVE CHANGES</button>
+        <p id="st" style="text-align:center; font-size:12px; margin-top:15px;"></p>
     </div>
 
     <script>
@@ -26,12 +32,22 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        async function save() {
-            await db.collection('index_data').doc('master_data').set({
-                title: document.getElementById('t').value,
-                description: document.getElementById('d').value
-            }, {merge: true});
-            document.getElementById('msg').innerText = "✅ Updated Successfully!";
+        async function update() {
+            const title = document.getElementById('t').value;
+            const desc = document.getElementById('d').value;
+            document.getElementById('st').innerText = "UPDATING...";
+
+            try {
+                await db.collection('index_data').doc('master_data').set({
+                    title: title,
+                    description: desc
+                }, { merge: true });
+                document.getElementById('st').style.color = "lime";
+                document.getElementById('st').innerText = "✅ WEBSITE UPDATED LIVE!";
+            } catch (e) {
+                document.getElementById('st').style.color = "red";
+                document.getElementById('st').innerText = "❌ ERROR: Check Firestore Rules";
+            }
         }
     </script>
 </body>
